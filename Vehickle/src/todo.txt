@@ -1,0 +1,14 @@
+
+- The Helicopter have their maxWeight increased by 10K
+- The Car is towed
+- The Vehicle is “rebuilt” as a Helicopter. (hint create a static method
+“rebuild” in the Car class that will output a Helicopter from a Vehicle with a
+maxWeight of 100K)
+- The original Helicopter is scrapped
+- The Car is demolished and converted to a golf cart(hint create a static
+method salvage Car class)
+- The Truck tows all the Vehicles in a loop (Not one by one)
+Make sure to communicate each action along with any severance information.
+As much code as possible needs to be reused! The super keyword should be
+used as much as possible. The static variables can only be edited in the class
+itself and not the Highway. So only getters for the static methods.
