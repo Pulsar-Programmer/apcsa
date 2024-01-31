@@ -56,7 +56,7 @@ public class Vehicle {
                 ", condition=" + condition +
                 ", miles=" + miles +
                 ", value=" + (condition == 0 ? getScrapValue() : getValue()) +
-                '}';
+            '}';
     }
 
     public double getValue(){

@@ -31,4 +31,16 @@ public class Car extends Vehicle {
         activeCars += 1;
         totalCars += 1;
     }
+
+    public static Helicopter rebuild(Car from){
+        var my_heli = new Helicopter();
+        my_heli.increaseMaxPassengerWeight(100_000);
+        return my_heli;
+    }
+
+    public static Vehicle salvage(Car from){
+        var my_vehicle = new Vehicle();
+        my_vehicle.name = "Golf Cart";
+        return my_vehicle;
+    }
 }

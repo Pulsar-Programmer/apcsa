@@ -9,4 +9,12 @@ public class Helicopter extends Vehicle {
         final var value = BASE_VALUE + 5000 * (int)(maxPassengerWeight / 1000);
         return 0.3 * value;
     }
+
+    // public Helicopter(){
+    //     maxPassengerWeight = 1000;
+    // }
+
+    public void increaseMaxPassengerWeight(int maxPassengerWeight) {
+        this.maxPassengerWeight += maxPassengerWeight;
+    }
 }
