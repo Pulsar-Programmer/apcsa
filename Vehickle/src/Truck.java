@@ -1,7 +1,7 @@
 public class Truck extends Car {
     
     public void tow(Vehicle other) {
-        if(other instanceof Truck){
+        if(other instanceof Truck || other.condition == 0){
             return;
         }
         other.condition = 0;

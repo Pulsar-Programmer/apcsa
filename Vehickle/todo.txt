@@ -1,5 +1,6 @@
 
 
 
-- The Truck tows all the Vehicles in a loop (Not one by one)
+
+Comment
 Make sure to communicate each action along with any severance information.
