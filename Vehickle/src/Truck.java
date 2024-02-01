@@ -1,11 +1,16 @@
 public class Truck extends Car {
+
+    public Truck() {
+        super();
+        name = "Super Truck";
+    }
     
+    ///Soft drops a Vehicle if it is not a Truck and it hasn't already been dropped.
     public void tow(Vehicle other) {
-        if(other instanceof Truck || other.condition == 0){
+        if(other instanceof Truck){
             return;
         }
-        other.condition = 0;
-        activeCars -= 1;
+        other.soft_drop();
     }
     
     @Override

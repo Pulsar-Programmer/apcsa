@@ -1,7 +1,7 @@
 public class Vehicle {
     protected String name;
     protected int condition;
-    protected int miles; //in thousands
+    protected int miles; ///in thousands
 
     protected static int activeCars = 0;
     protected static int totalCars = 0;
@@ -9,20 +9,20 @@ public class Vehicle {
     protected final static double BASE_VALUE = 20_000.0;
     protected final static double CONDITION_VALUE = 8_000.0;
 
+    ///We construct a vehicle.
     public Vehicle(String name, int condition, int miles) {
         this.name = name;
         this.condition = condition;
         this.miles = miles;
-        activeCars += 1;
-        totalCars += 1;
     }
 
     public Vehicle() {
-        name = "Honda Accord";
-        condition = 5;
-        miles = 0;
-        activeCars += 1;
-        totalCars += 1;
+        this("Honda Accord", 5, 0);
+    }
+
+    public Vehicle(String name) {
+        this();
+        this.name = name;
     }
 
     public String getName() {
@@ -38,8 +38,8 @@ public class Vehicle {
     }
 
     public void setCondition(int condition) {
-        if((this instanceof Car || this instanceof Truck) && condition==0) activeCars -= 1;
-        this.condition = condition;
+        if(condition==0) soft_drop();
+        this.condition = Math.max(1, Math.min(5, condition)); ///Clamp the value between 1-5.
     }
 
     public int getMiles() {
@@ -47,12 +47,10 @@ public class Vehicle {
     }
 
     public void setMiles(int miles) {
-        setCondition(0);
         if(miles >= 200){
-            this.miles = 200;
-            return;
+            soft_drop();
         }
-        this.miles = miles;
+        this.miles = Math.max(0, Math.min(200, miles)); ///Clamp the value between 0-200.;
     }
 
     @Override
@@ -72,8 +70,18 @@ public class Vehicle {
     public double getScrapValue(){
         return 0;
     }
-    
 
-    
+    ///Implementation of deactivate, scrapping, and condition=0.
+    protected void soft_drop(){
+        condition=0;
+    }
+
+    public static int getActiveCars() {
+        return activeCars;
+    }
+
+    public static int getTotalCars() {
+        return totalCars;
+    }
     
 }

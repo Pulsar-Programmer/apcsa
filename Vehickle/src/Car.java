@@ -8,18 +8,8 @@ public class Car extends Vehicle {
     public double getScrapValue(){
         final var value = super.getValue() + 1000 * 5;
         final var removed = value * 0.1 - 500 * (int)(miles);
-        final var clamped = Math.max(0, Math.min(2000, removed));
+        final var clamped = Math.max(0, Math.min(2000, removed)); ///Clamp the value between 0-2000.
         return clamped;
-    }
-
-    @Override
-    public void setMiles(int miles) {
-        if(miles >= 200){
-            this.miles = 200;
-            activeCars -= 1;
-            return;
-        }
-        super.setMiles(miles);
     }
 
     public Car(String name, int condition, int miles) {
@@ -35,8 +25,14 @@ public class Car extends Vehicle {
     }
 
     public static Vehicle salvage(Car from){
-        var my_vehicle = new Vehicle();
-        my_vehicle.name = "Golf Cart";
+        var my_vehicle = new Vehicle("Golf Cart");
+        from.soft_drop();
         return my_vehicle;
+    }
+
+    @Override
+    protected void soft_drop(){
+        super.soft_drop();
+        activeCars -= 1;
     }
 }
