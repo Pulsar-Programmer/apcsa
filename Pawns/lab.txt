@@ -1,0 +1,35 @@
+class BoardWithPawns
+priv field `board` : `2D square array of characters`
+priv field `turn` : bool
+
+X’s will start at the bottom and correspond to true; 
+You can assume that the board will be square but should be able to handle a board of 2x2 and up to 12x12.
+The goal of the game is to move the pawns across the screen, the first person to reach the other side
+with a single pawn will win or if you eliminate all other pawns.
+
+
+
+class PawnDriver
+
+which will have 2 players taking turns playing.
+Communicating which side won at the end.
+NOTE: If the side whose turn it is doesn’t have a valid move then the game ends as a stalemate.
+
+When printing the board you should print it with the proper column headings so that the user
+can easily communicate to you their column selection.
+
+
+fns `standard constructors` => ?
+fns `standard methods` => ?
+
+fn reset() resets the board
+
+fn randomize() fill the board with checkers in the first 2 rows with the respective side with each
+only will work with boards 4x4 or larger
+
+fn movePawn(int col) will move the pawn in that column forward or, if possible, capture an
+opponent’s pawn. Prioritize capturing the left one of both are possible. This will return true if a
+move was made. If there are 2 pawns in the same column move the one most advanced
+
+fn randomPlay() this will play a random pawn based on the turn. You should put a loop in here by
+generating a random column and trying to play a pawn at that column that is furthest advanced.
