@@ -2,4 +2,13 @@
 
 Projects:
 
-- Vehicle Lab: Vehickle
+| Lab    | Home | School | Rust |
+| -------- | ------- | ------- | ------- |
+| Vehicle | Vehickle | 〃 | TBD |
+| | | |
+| | | |
+| | | |
+| | | |
+| | | |
+| | | |
+
