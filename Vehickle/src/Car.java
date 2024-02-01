@@ -26,7 +26,6 @@ public class Car extends Vehicle {
 
     public static Vehicle salvage(Car from){
         var my_vehicle = new Vehicle("Golf Cart");
-        from.soft_drop();
         return my_vehicle;
     }
 

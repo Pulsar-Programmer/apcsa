@@ -18,7 +18,7 @@ public class Highway {
         heli.increaseMaxPassengerWeight(10_000);
         System.out.println("The helicopter can hold more weight suddenly!");
         System.out.println("Helicopter: " + heli);
-                            // System.out.println(Vehicle.getActiveCars());
+
         ///We tow the car.
         truck.tow(car);
         System.out.println("The car broke down! Let's tow it with our handy dandy truck!");
@@ -27,7 +27,7 @@ public class Highway {
         vehi = Helicopter.rebuild(vehi);
         System.out.println("The vehicle is... no more... let's rebuild it into a helicopter!!");
         System.out.println("New Helicopter: " + vehi);
-                            // System.out.println(Vehicle.getActiveCars());
+        
         System.out.println("We still have some parts left over from the car... so let's make a golf cart!");
         ///We create a golf cart.
         var my_golf_cart = Car.salvage(car);
