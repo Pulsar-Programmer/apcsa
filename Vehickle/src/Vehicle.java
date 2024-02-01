@@ -38,8 +38,10 @@ public class Vehicle {
     }
 
     public void setCondition(int condition) {
-        if(condition==0) soft_drop(); ///If the intended condition is zero, we simply soft_drop.
-        this.condition = Math.max(1, Math.min(5, condition)); ///Clamp the value between 1-5.
+        ///If the intended condition is zero, we simply soft_drop.
+        if(condition==0) soft_drop();
+        ///Clamp the value between 1-5.
+        else this.condition = Math.max(1, Math.min(5, condition)); 
     }
 
     public int getMiles() {
@@ -60,7 +62,7 @@ public class Vehicle {
                 "name='" + name + '\'' +
                 ", condition=" + condition +
                 ", miles=" + miles +
-                ", value=" + (condition == 0 ? getScrapValue() : getValue()) +
+                (condition == 0 ? ", scrapped_value=" + getScrapValue() : ", value=" + getValue()) +
             '}';
     }
 

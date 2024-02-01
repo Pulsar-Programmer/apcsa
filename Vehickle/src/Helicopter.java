@@ -1,20 +1,20 @@
 public class Helicopter extends Vehicle {
-    private int maxPassengerWeight;
+    private int maxPassengerWeight; ///in thousands
 
     @Override
     public double getValue(){
-        return super.getValue() + 5000 * (int)(maxPassengerWeight / 1000);
+        return super.getValue() + 5000 * (int)(maxPassengerWeight / 1);
     }
 
     @Override
     public double getScrapValue(){
-        final var value = BASE_VALUE + 5000 * (int)(maxPassengerWeight / 1000);
+        final var value = BASE_VALUE + 5000 * (int)(maxPassengerWeight / 1);
         return 0.3 * value;
     }
 
     public Helicopter(){
         super();
-        maxPassengerWeight = 100;
+        maxPassengerWeight = 10;
         name = "My Copter";
     }
 
@@ -23,7 +23,7 @@ public class Helicopter extends Vehicle {
         var my_heli = new Helicopter();
         ///We set the relevant Helicopter parameters.
         my_heli.name = from.name;
-        my_heli.increaseMaxPassengerWeight(100_000);
+        my_heli.maxPassengerWeight = 100;
         ///We soft drop it after reading relevant info.
         from.soft_drop();
         return my_heli;
@@ -41,7 +41,7 @@ public class Helicopter extends Vehicle {
                 ", condition=" + condition +
                 ", miles=" + miles +
                 ", max_passenger_weight=" + maxPassengerWeight +
-                ", value=" + (condition == 0 ? getScrapValue() : getValue()) +
+                (condition == 0 ? ", scrapped_value=" + getScrapValue() : ", value=" + getValue()) +
             '}';
     }
 }
