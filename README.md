@@ -10,6 +10,6 @@ Projects:
 | Mancala (5) | Mancala | TBD | TBA |
 | Brag Cards (4) | TheCars | TBD | TBA |
 | Pig Latin (3) | PigLatin | TBD | TBA |
-| Craps | CrappingOut | TBD | TBA |
-| Tax Calculator | N/A | TBD | TBA |
+| Craps (2) | CrappingOut | TBD | TBA |
+| Tax Calculator (1) | N/A | TBD | TBA |
 
