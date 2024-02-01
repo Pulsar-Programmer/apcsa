@@ -1,3 +1,9 @@
+
+
+/// Triple comments are intended to be read.
+// Double comments are not intended to provide helpful information.
+
+
 public class Highway {
     public static void main(String[] args) throws Exception {
         ///We create our beautiful set of four vehicles.
@@ -25,8 +31,8 @@ public class Highway {
         System.out.println("Car: " + car);
         ///We rebuild the helicopter from the vehicle at slot 0.
         vehi = Helicopter.rebuild(vehi);
-        System.out.println("The vehicle is... no more... let's rebuild it into a helicopter!!");
-        System.out.println("New Helicopter: " + vehi);
+        System.out.println("The vehicle is... no more... let's add some propellers and make it into a helicopter!!");
+        System.out.println("Helicopter-Vehicle Hybrid: " + vehi);
         
         System.out.println("We still have some parts left over from the car... so let's make a golf cart!");
         ///We create a golf cart.

@@ -24,13 +24,18 @@ public class Car extends Vehicle {
         totalCars += 1;
     }
 
+    ///Drops the vehicle in question and returns a Golf Cart.
     public static Vehicle salvage(Car from){
-        var my_vehicle = new Vehicle("Golf Cart");
+        from.soft_drop();
+        final var my_vehicle = new Vehicle("Golf Cart");
         return my_vehicle;
     }
 
     @Override
     protected void soft_drop(){
+        if(condition==0){
+            return;
+        }
         super.soft_drop();
         activeCars -= 1;
     }

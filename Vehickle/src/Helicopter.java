@@ -21,8 +21,10 @@ public class Helicopter extends Vehicle {
     ///We rebuild a Helicopter from a Vehicle.
     public static Helicopter rebuild(Vehicle from){
         var my_heli = new Helicopter();
+        ///We set the relevant Helicopter parameters.
         my_heli.name = from.name;
         my_heli.increaseMaxPassengerWeight(100_000);
+        ///We soft drop it after reading relevant info.
         from.soft_drop();
         return my_heli;
     }

@@ -38,7 +38,7 @@ public class Vehicle {
     }
 
     public void setCondition(int condition) {
-        if(condition==0) soft_drop();
+        if(condition==0) soft_drop(); ///If the intended condition is zero, we simply soft_drop.
         this.condition = Math.max(1, Math.min(5, condition)); ///Clamp the value between 1-5.
     }
 
@@ -47,6 +47,7 @@ public class Vehicle {
     }
 
     public void setMiles(int miles) {
+        ///If the miles have surpassed a certain amount, we need to make the drop.
         if(miles >= 200){
             soft_drop();
         }
@@ -71,7 +72,7 @@ public class Vehicle {
         return 0;
     }
 
-    ///Implementation of deactivate, scrapping, and condition=0.
+    ///Implementation of deactivate, scrapping, and condition=0. You can only do this once.
     protected void soft_drop(){
         condition=0;
     }

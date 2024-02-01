@@ -7,9 +7,11 @@ public class Truck extends Car {
     
     ///Soft drops a Vehicle if it is not a Truck and it hasn't already been dropped.
     public void tow(Vehicle other) {
+        ///if it is a Truck, we cannot tow it.
         if(other instanceof Truck){
             return;
         }
+        ///We soft_drop the Vehicle.
         other.soft_drop();
     }
     
