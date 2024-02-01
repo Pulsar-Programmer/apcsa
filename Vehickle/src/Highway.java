@@ -24,13 +24,13 @@ public class Highway {
         truck.tow(car);
         System.out.println("The car broke down! Let's tow it with our handy dandy truck!");
         System.out.println("Car: " + car);
-        var heli2 = Car.rebuild(car);
-        System.out.println("The car is... no more... let's rebuild it into a helicopter!!");
+        var heli2 = Helicopter.rebuild(vehi);
+        System.out.println("The vehicle is... no more... let's rebuild it into a helicopter!!");
         System.out.println("The highway only has room for one helicopter, so we're going to have to fly the other helicopter away!");
         System.out.println("New Helicopter: " + heli2);
         my_vehicles[3] = heli2;
 
-        System.out.println("We still have some parts left over... so let's make a golf cart!");
+        System.out.println("We still have some parts left over from the car... so let's make a golf cart!");
         var my_golf_cart = Car.salvage(car);
         my_vehicles[1] = my_golf_cart;
         System.out.println("Golf Cart: " + my_golf_cart);

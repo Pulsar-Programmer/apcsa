@@ -38,6 +38,7 @@ public class Vehicle {
     }
 
     public void setCondition(int condition) {
+        if((this instanceof Car || this instanceof Truck) && condition==0) activeCars -= 1;
         this.condition = condition;
     }
 
@@ -46,6 +47,11 @@ public class Vehicle {
     }
 
     public void setMiles(int miles) {
+        setCondition(0);
+        if(miles >= 200){
+            this.miles = 200;
+            return;
+        }
         this.miles = miles;
     }
 

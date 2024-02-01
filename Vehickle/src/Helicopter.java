@@ -14,6 +14,12 @@ public class Helicopter extends Vehicle {
     //     maxPassengerWeight = 1000;
     // }
 
+    public static Helicopter rebuild(Vehicle from){
+        var my_heli = new Helicopter();
+        my_heli.increaseMaxPassengerWeight(100_000);
+        return my_heli;
+    }
+
     public void increaseMaxPassengerWeight(int maxPassengerWeight) {
         this.maxPassengerWeight += maxPassengerWeight;
     }

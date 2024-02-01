@@ -1,8 +1,10 @@
 public class Car extends Vehicle {
+    @Override
     public double getValue(){
         return super.getValue() + 1000 * condition;
     }
 
+    @Override
     public double getScrapValue(){
         final var value = super.getValue() + 1000 * 5;
         final var removed = value * 0.1 - 500 * (int)(miles);
@@ -30,12 +32,6 @@ public class Car extends Vehicle {
         super();
         activeCars += 1;
         totalCars += 1;
-    }
-
-    public static Helicopter rebuild(Car from){
-        var my_heli = new Helicopter();
-        my_heli.increaseMaxPassengerWeight(100_000);
-        return my_heli;
     }
 
     public static Vehicle salvage(Car from){
