@@ -59,11 +59,16 @@ public class Vehicle {
     @Override
     public String toString() {
         return "Vehicle{" +
-                "name='" + name + '\'' +
-                ", condition=" + condition +
-                ", miles=" + miles +
-                (condition == 0 ? ", scrapped_value=" + getScrapValue() : ", value=" + getValue()) +
+                stdfmtdebug_inner() +
             '}';
+    }
+
+    ///We create a std::fmt::Debug implementation to be used for the inner fields in all the classes.
+    protected String stdfmtdebug_inner() {
+        return "name=" + name + '\'' +
+        ", condition=" + condition +
+        ", miles=" + miles +
+        (condition == 0 ? ", scrapped_value=" + getScrapValue() : ", value=" + getValue());
     }
 
     public double getValue(){

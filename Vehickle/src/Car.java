@@ -39,4 +39,11 @@ public class Car extends Vehicle {
         super.soft_drop();
         activeCars -= 1;
     }
+
+    @Override
+    public String toString() {
+        return "Car{" +
+            stdfmtdebug_inner() +
+        '}';
+    }
 }

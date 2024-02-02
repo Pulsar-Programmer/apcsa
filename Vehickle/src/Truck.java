@@ -19,4 +19,11 @@ public class Truck extends Car {
     public double getValue(){
         return super.getValue() * Math.pow(0.95,(int)(miles / 10));
     }
+
+    @Override
+    public String toString() {
+        return "Truck{" +
+            stdfmtdebug_inner() +
+        '}';
+    }
 }

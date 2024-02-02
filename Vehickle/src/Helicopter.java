@@ -37,11 +37,8 @@ public class Helicopter extends Vehicle {
     @Override
     public String toString() {
         return "Helicopter{" +
-                "name='" + name + '\'' +
-                ", condition=" + condition +
-                ", miles=" + miles +
-                ", max_passenger_weight=" + maxPassengerWeight +
-                (condition == 0 ? ", scrapped_value=" + getScrapValue() : ", value=" + getValue()) +
-            '}';
+            stdfmtdebug_inner() +
+            ", max_passenger_weight=" + maxPassengerWeight +
+        '}';
     }
 }
