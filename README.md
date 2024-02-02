@@ -2,7 +2,7 @@
 
 Projects:
 
-| Lab    | Home | School | Rust |
+| Lab | Home | Rust |
 | -------- | ------- | ------- | ------- |
 | Vehicle (7) | Vehickle | TBA |
 | New Years (6) | GraphicsLab | TBA |
