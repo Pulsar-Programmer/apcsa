@@ -11,9 +11,9 @@ public class Vehicle {
 
     ///We construct a vehicle.
     public Vehicle(String name, int condition, int miles) {
-        this.name = name;
-        this.condition = condition;
-        this.miles = miles;
+        setName(name);
+        setCondition(condition);
+        setMiles(miles);
     }
 
     public Vehicle() {
@@ -22,7 +22,7 @@ public class Vehicle {
 
     public Vehicle(String name) {
         this();
-        this.name = name;
+        setName(name);
     }
 
     public String getName() {
