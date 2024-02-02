@@ -3,7 +3,7 @@
 Projects:
 
 | Lab | Home | Rust |
-| -------- | ------- | ------- | ------- |
+| -------- | ------- | ------- |
 | Vehicle (7) | Vehickle | TBA |
 | New Years (6) | GraphicsLab | TBA |
 | Pawns (5a) | Pawns | TBA |
