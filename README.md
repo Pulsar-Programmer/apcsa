@@ -11,5 +11,5 @@ Projects:
 | Brag Cards (4) | TheCars | TBA |
 | Pig Latin (3) | PigLatin | TBA |
 | Craps (2) | CrappingOut | TBA |
-| Tax Calculator (1) | TBD | TBA |
+| Tax Calculator (1) | TaxCalculator | TBA |
 
