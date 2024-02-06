@@ -2,14 +2,14 @@
 
 Projects:
 
-| Lab | Name | Rust |
-| -------- | ------- | ------- |
-| Vehicle (7) | Vehickle | TBA |
-| New Years (6) | GraphicsLab | TBA |
-| Pawns (5a) | Pawns | TBA |
-| Mancala (5) | Mancala | TBA |
-| Brag Cards (4) | TheCars | TBA |
-| Pig Latin (3) | PigLatin | TBA |
-| Craps (2) | CrappingOut | TBA |
-| Tax Calculator (1) | TaxCalculator | TBA |
+| Lab | Name |
+| -------- | ------- |
+| Vehicle (7) | Vehickle |
+| New Years (6) | GraphicsLab |
+| Pawns (5a) | Pawns |
+| Mancala (5) | Mancala |
+| Brag Cards (4) | TheCars |
+| Pig Latin (3) | PigLatin |
+| Craps (2) | CrappingOut |
+| Tax Calculator (1) | TaxCalculator |
 
