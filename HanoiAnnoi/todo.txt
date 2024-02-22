@@ -18,7 +18,7 @@ Other than the standard getters, setters, toString, constructors you will need t
 methods. (Note: Make sure toString clearly draws the board)
 int getCount() – returns how many rings are on all 3 pegs
 void reset() - restacks the tower of Hanoi to the first peg
-void setTower(int rings) stacks the left peg with the number of rings
+void setTower(int rings) stacks the left peg with the number of rings // this clears all towers then does with_num
 boolean isSolved() checks to see if all the pegs are on the right peg
 boolean makeMove(int one, int two) (the pegs are 0, 1 and 2 for left, middle, right)
 

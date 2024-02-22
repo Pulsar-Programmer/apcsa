@@ -75,7 +75,7 @@ public class Towers {
         return true;
     }
 
-    public static ArrayList<Integer> with_num(Integer num){
+    public static ArrayList<Integer> with_num(int num){
         var tower = new ArrayList<Integer>();
 
         for(var i = 0; i < num; i += 1){
@@ -83,6 +83,20 @@ public class Towers {
         }
 
         return tower;
+    }
+
+    public void setTower(int num){
+        left = with_num(num);
+        middle.clear();
+        right.clear();
+    }
+
+    public void reset(){
+        setTower(getCount());
+    }
+
+    public int getCount(){
+        return left.size() + middle.size() + right.size();
     }
 
     private static Integer peek(ArrayList<Integer> inner){
