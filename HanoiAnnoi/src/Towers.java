@@ -1,9 +1,9 @@
 import java.util.ArrayList;
 
 public class Towers {
-    private Tower left;
-    private Tower middle;
-    private Tower right;
+    private ArrayList<Integer> left;
+    private ArrayList<Integer> middle;
+    private ArrayList<Integer> right;
 
 
     //impl Tower:
@@ -12,33 +12,108 @@ public class Towers {
         return Math.max(min, Math.min(max, value));
     }
 
-    private void assert_legality(int _from, int _to){
-        int from = (int)clamp(_from, 1, 3);
-        int to = (int)clamp(_to, 1, 3);
-        //TODO
-
-    }
-
     private int max_len(){
         return Math.max(Math.max(left.size(), middle.size()), right.size());
     }
 
     @Override
     public String toString() {
-
         String string = "¯¯¯\n";
 
         final var len = max_len();
         for(var i = 0; i < len; i += 1){
-            final var leftc = left.get_as_str_or_space(i);
-            final var midc = middle.get_as_str_or_space(i);
-            final var rightc = right.get_as_str_or_space(i);
+            final var leftc = get_as_str_or_space(left, i);
+            final var midc = get_as_str_or_space(middle, i);
+            final var rightc = get_as_str_or_space(right, i);
             string = (leftc + midc + rightc + "\n").concat(string);
         }
         return string;
         //TODO: Awaits testing
     }
+    
+    public boolean makeMove(int one, int two){
+        var a1 = corresponding_array(one);
+        var a2 = corresponding_array(two);
+        
+        if(assert_legality(a1, a2)){
+            a1.add(a2.remove(a2.size()-1));
+        } else if(assert_legality(a2, a1)) {
+            a2.add(a1.remove(a1.size()-1));
+        } else {
+            return false;
+        }
+        return true;
+    }
 
+    private boolean assert_legality(ArrayList<Integer> from, ArrayList<Integer> to){
+        return peek(to) > peek(from);
+    }
+
+    public ArrayList<Integer> corresponding_array(int val){
+        switch (val) {
+            case 0:
+                return left;
+            case 1:
+                return middle;
+            case 2:
+                return right;
+            default:
+                return corresponding_array(val % 3);
+        }
+    }
+
+    public boolean isSolved(){
+        //each element must be one less than the one before it;
+        if(!left.isEmpty() || !middle.isEmpty()){
+            return false;
+        }
+        for(var i = 0; i < right.size() - 1; i+=1){
+            if(right.get(i) <= right.get(i + 1)){
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public static ArrayList<Integer> with_num(Integer num){
+        var tower = new ArrayList<Integer>();
+
+        for(var i = 0; i < num; i += 1){
+            tower.add(num - i);
+        }
+
+        return tower;
+    }
+
+    private static Integer peek(ArrayList<Integer> inner){
+        return inner.get(inner.size() - 1);
+    }
+
+    private static Integer pop_or_zero(ArrayList<Integer> inner){
+        var size = inner.size();
+        if(size == 0){
+            return 0;
+        }
+        var get = inner.get(size - 1);
+        inner.remove(size - 1);
+        return get;
+    }
+
+    private static Integer get_or_zero(ArrayList<Integer> inner, int index){
+        try {
+            return inner.get(index);
+        } catch (Exception e) {
+            return 0;
+        }
+    }
+
+    public static String get_as_str_or_space(ArrayList<Integer> inner, int index){
+        try {
+            return inner.get(index).toString();
+        } catch (Exception e) {
+            return " ";
+        }
+    }
 
 
     
