@@ -21,7 +21,7 @@ public class Tower {
         inner.add(val);
     }
 
-    private int size(){
+    public int size(){
         return inner.size();
     }
 
@@ -44,6 +44,14 @@ public class Tower {
             return inner.get(index);
         } catch (Exception e) {
             return 0;
+        }
+    }
+
+    public String get_as_str_or_space(int index){
+        try {
+            return inner.get(index).toString();
+        } catch (Exception e) {
+            return " ";
         }
     }
 }

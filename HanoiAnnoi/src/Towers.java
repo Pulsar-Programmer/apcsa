@@ -1,9 +1,9 @@
 import java.util.ArrayList;
 
 public class Towers {
-    private Tower a;
-    private Tower b;
-    private Tower c;
+    private Tower left;
+    private Tower middle;
+    private Tower right;
 
 
     //impl Tower:
@@ -12,21 +12,31 @@ public class Towers {
         return Math.max(min, Math.min(max, value));
     }
 
-    private static char base_char(){
-        return '¯';
-    }
-
     private void assert_legality(int _from, int _to){
-        int from = (int)clamp(_from, 1.0, 3.0);
-        int to = (int)clamp(_to, 1.0, 3.0);
+        int from = (int)clamp(_from, 1, 3);
+        int to = (int)clamp(_to, 1, 3);
         //TODO
 
+    }
+
+    private int max_len(){
+        return Math.max(Math.max(left.size(), middle.size()), right.size());
     }
 
     @Override
     public String toString() {
-        return "Towers [a=" + a + ", b=" + b + ", c=" + c + "]";
-        //TODO
+
+        String string = "¯¯¯\n";
+
+        final var len = max_len();
+        for(var i = 0; i < len; i += 1){
+            final var leftc = left.get_as_str_or_space(i);
+            final var midc = middle.get_as_str_or_space(i);
+            final var rightc = right.get_as_str_or_space(i);
+            string = (leftc + midc + rightc + "\n").concat(string);
+        }
+        return string;
+        //TODO: Awaits testing
     }
 
 
