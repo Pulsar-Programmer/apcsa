@@ -1,6 +1,3 @@
-The Driver class will ask the user to set up a tower of Hanoi and will give the option to either
-have the user try to solve it themselves or demonstrate the solving of it showing each move
-and the state of the board right after the move making sure to be re-runnable.
 
 Does reset() restack them or actually just rebuilds them? So say has no number 1s, after the conversion it will have 1s?
 

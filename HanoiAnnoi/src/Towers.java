@@ -29,6 +29,8 @@ public class Towers {
     }
     
     public boolean makeMove(int one, int two){
+        if(one % 3 != one || two % 3 != two)
+            return false;
         var a1 = corresponding_array(one);
         var a2 = corresponding_array(two);
         
