@@ -5,9 +5,6 @@ public class Towers {
     private ArrayList<Integer> middle;
     private ArrayList<Integer> right;
 
-
-    //impl Tower:
-
     private static double clamp(double value, double min, double max) {
         return Math.max(min, Math.min(max, value));
     }
@@ -129,6 +126,46 @@ public class Towers {
         }
     }
 
+
+
+    //getters and setters
+    public ArrayList<Integer> getLeft() {
+        return left;
+    }
+
+    public void setLeft(ArrayList<Integer> left) {
+        this.left = left;
+    }
+
+    public ArrayList<Integer> getMiddle() {
+        return middle;
+    }
+
+    public void setMiddle(ArrayList<Integer> middle) {
+        this.middle = middle;
+    }
+
+    public ArrayList<Integer> getRight() {
+        return right;
+    }
+
+    public void setRight(ArrayList<Integer> right) {
+        this.right = right;
+    }
+
+    //Constructors
+
+    public Towers() {
+        left = with_num(5);
+        middle = with_num(5);
+        right = with_num(5);
+    }
+
+    public Towers(ArrayList<Integer> left, ArrayList<Integer> middle, ArrayList<Integer> right) {
+        this.left = left;
+        this.middle = middle;
+        this.right = right;
+    }
 
     
 }

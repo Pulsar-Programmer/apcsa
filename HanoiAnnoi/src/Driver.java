@@ -2,24 +2,11 @@ import java.util.Scanner;
 
 public class Driver {
     public static void main(String[] args) throws Exception {
-
-        int t = 0xFFA1343;
-
-
-
-
-
-
-
-
-
-
-
-
         var scanner = new Scanner(System.in);
         //make it sleep
         //make it clear the console
-        var for_ai = false;
+        System.out.println("Do you want me to show you the solution before you attempt it? (enter `true` or `false`)");
+        var for_ai = scanner.nextBoolean();
 
         
         var my_tower = new Towers();
@@ -59,10 +46,4 @@ public class Driver {
         // System.out.flush();
         for(var i = 0; i < 20; i+=1) System.out.println();
     }
-
-    /*
-     * Move one disk from peg A to peg B or vice versa, whichever move is legal.
-    Move one disk from peg A to peg C or vice versa, whichever move is legal.
-    Move one disk from peg B to peg C or vice versa, whichever move is legal.
-     */
 }
