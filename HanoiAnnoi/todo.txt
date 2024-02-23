@@ -7,10 +7,6 @@ LOOK GOOD. Represent the 3 array lists vertically eg.
 5 4 7
 ¯ ¯ ¯
 
-Make sure toString clearly shows the board
-Test reset()
 Does reset() restack them or actually just rebuilds them? So say has no number 1s, after the conversion it will have 1s?
-Test setTower()
-Test isSolved()
 Test makeMove()
 

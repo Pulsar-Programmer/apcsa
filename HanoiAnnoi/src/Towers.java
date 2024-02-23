@@ -15,17 +15,17 @@ public class Towers {
 
     @Override
     public String toString() {
-        String string = "¯¯¯\n";
+        String string = "- - -\n";
+        string += "0 1 2\n";
 
         final var len = max_len();
         for(var i = 0; i < len; i += 1){
             final var leftc = get_as_str_or_space(left, i);
             final var midc = get_as_str_or_space(middle, i);
             final var rightc = get_as_str_or_space(right, i);
-            string = (leftc + midc + rightc + "\n").concat(string);
+            string = (leftc + " " + midc + " " + rightc + "\n").concat(string);
         }
         return string;
-        //TODO: Awaits testing
     }
     
     public boolean makeMove(int one, int two){
@@ -46,7 +46,7 @@ public class Towers {
         return peek(to) > peek(from);
     }
 
-    public ArrayList<Integer> corresponding_array(int val){
+    private ArrayList<Integer> corresponding_array(int val){
         switch (val) {
             case 0:
                 return left;
@@ -157,8 +157,8 @@ public class Towers {
 
     public Towers() {
         left = with_num(5);
-        middle = with_num(5);
-        right = with_num(5);
+        middle = with_num(0);
+        right = with_num(0);
     }
 
     public Towers(ArrayList<Integer> left, ArrayList<Integer> middle, ArrayList<Integer> right) {
