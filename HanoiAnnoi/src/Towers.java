@@ -33,9 +33,9 @@ public class Towers {
         var a2 = corresponding_array(two);
         
         if(assert_legality(a1, a2)){
-            a1.add(a2.remove(a2.size()-1));
-        } else if(assert_legality(a2, a1)) {
             a2.add(a1.remove(a1.size()-1));
+        } else if(assert_legality(a2, a1)) {
+            a1.add(a2.remove(a2.size()-1));
         } else {
             return false;
         }
@@ -43,6 +43,8 @@ public class Towers {
     }
 
     private boolean assert_legality(ArrayList<Integer> from, ArrayList<Integer> to){
+        if(from.isEmpty()) return false;
+        if(to.isEmpty()) return true;
         return peek(to) > peek(from);
     }
 
@@ -97,6 +99,9 @@ public class Towers {
     }
 
     private static Integer peek(ArrayList<Integer> inner){
+        if(inner.isEmpty()){
+            return Integer.MAX_VALUE; //this should never be triggered
+        }
         return inner.get(inner.size() - 1);
     }
 

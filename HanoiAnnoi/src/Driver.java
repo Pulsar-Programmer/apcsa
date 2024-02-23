@@ -5,17 +5,7 @@ public class Driver {
     public static void main(String[] args) throws Exception {
 
         var my_towr = new Towers();
-        my_towr.setTower(2);
-        System.out.println(my_towr.isSolved());
-        System.out.println(my_towr);
-        my_towr.setLeft(Towers.with_num(0));
-        my_towr.setRight(Towers.with_num(4));
-        System.out.println(my_towr.isSolved());
-        System.out.println(my_towr);
-        my_towr.getRight().remove(0);
-        my_towr.getRight().remove(0);
-        my_towr.getRight().add(0, 1);
-        System.out.println(my_towr.isSolved());
+        my_towr.makeMove(1, 0);
         System.out.println(my_towr);
 
         var scanner = new Scanner(System.in);
