@@ -9,7 +9,7 @@ public class Driver {
         while(true){
             var my_tower = new Towers();
 
-            System.out.println("How would you like your tower? Enter a number greater than ");
+            System.out.println("How would you like your tower? Enter a number.");
             final var size = scanner.nextInt(); scanner.nextLine();
             if(size < 1){
                 System.out.println("I strongly discourage this size... Please try again.");
@@ -22,7 +22,11 @@ public class Driver {
             
             var aimove = 0;
             while(!my_tower.isSolved()){
+                clear_console();
+                System.out.println(my_tower);
+                
                 if(for_ai){
+                    Thread.sleep(1000);
                     switch (aimove) {
                         case 0:
                             my_tower.makeMove(0, 1);
@@ -44,14 +48,13 @@ public class Driver {
                     final var two = scanner.nextInt(); scanner.nextLine();
                     if(!my_tower.makeMove(one, two)){
                         System.out.println("The move you attempted to make was invalid! Please try again!");
+                        Thread.sleep(1000);
                         continue;
                     }
                 }
-
-                clear_console();
-                System.out.println(my_tower);
-                Thread.sleep(1000);
             }
+            clear_console();
+            System.out.println(my_tower);
             if(!for_ai){
                 System.out.println("Great job! You've solved it!");
             }
