@@ -38,23 +38,36 @@ public class Driver {
                     ///We sleep so the user has a chance to see the animation.
                     Thread.sleep(1000);
                     ///We measure the move. Based on which time, we roll the makeMove in the special wikipedia config.
-                    switch (move) {
-                        case 0:
-                            my_tower.makeMove(0, 1);
-                            break;
-                        case 1:
-                            my_tower.makeMove(0, 2);
-                            break;
-                        case 2:
-                            my_tower.makeMove(1, 2);
-                            break;
-                        default:
-                            break;
+                    if(size % 2 == 0){
+                        switch (move % 3) {
+                            case 0:
+                                my_tower.makeMove(0, 1);
+                                break;
+                            case 1:
+                                my_tower.makeMove(0, 2);
+                                break;
+                            case 2:
+                                my_tower.makeMove(1, 2);
+                                break;
+                            default:
+                                break;
+                        }
                     }
-                    ///Each time, we increment the move.
-                    move += 1;
-                    ///Then, we cap it my circling it at 3 with only three states for AI only.
-                    move %= 3;
+                    else {
+                        switch (move % 3) {
+                            case 0:
+                                my_tower.makeMove(0, 2);
+                                break;
+                            case 1:
+                                my_tower.makeMove(0, 1);
+                                break;
+                            case 2:
+                                my_tower.makeMove(1, 2);
+                                break;
+                            default:
+                                break;
+                        }
+                    }
                 } else {
                     ///We query the two values, one after the other.
                     System.out.println("Which two values do you want to move? Enter the first followed by the second.");
@@ -66,8 +79,9 @@ public class Driver {
                         Thread.sleep(1000);
                         continue;
                     }
-                    move += 1;
                 }
+                ///Each time, we increment the move.
+                move += 1;
             }
             ///We clear the console and print out the tower.
             clear_console();
@@ -75,7 +89,10 @@ public class Driver {
             ///If the user solved it, say good job!
             if(!for_ai){
                 System.out.println("Great job! You've solved it!");
-                System.out.println("It took you " + move + " moves compared to the optimal amount which is " + (Math.pow(2.0, size) - 1) + " moves.");
+                System.out.println("It took you " + move + " moves compared to the optimal amount which is " + (int)(Math.pow(2.0, size) - 1) + " moves.");
+            }
+            else{
+                System.out.println("It took the AI the optimal amount of moves: " + move);
             }
             ///Request a re-run.
             System.out.println("Care to try again? (enter true or false)");
