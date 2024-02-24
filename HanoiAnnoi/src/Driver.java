@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 import java.util.Scanner;
 
 ///Note: Triple comments are intended to be read.
@@ -26,8 +25,8 @@ public class Driver {
             System.out.println("Do you want me to show you the solution before you attempt it? (enter `true` or `false`)");
             final var for_ai = scanner.nextBoolean(); scanner.nextLine();
 
-            ///We first keep track of the type of move next to do.
-            var aimove = 0;
+            ///We keep track of the move count.
+            var move = 0;
             ///While my_tower is not solved, we continue.
             while(!my_tower.isSolved()){
                 ///We clear the console and display our tower.
@@ -39,7 +38,7 @@ public class Driver {
                     ///We sleep so the user has a chance to see the animation.
                     Thread.sleep(1000);
                     ///We measure the move. Based on which time, we roll the makeMove in the special wikipedia config.
-                    switch (aimove) {
+                    switch (move) {
                         case 0:
                             my_tower.makeMove(0, 1);
                             break;
@@ -53,9 +52,9 @@ public class Driver {
                             break;
                     }
                     ///Each time, we increment the move.
-                    aimove += 1;
-                    ///Then we cap it my circling it at 3 with only three states.
-                    aimove %= 3;
+                    move += 1;
+                    ///Then, we cap it my circling it at 3 with only three states for AI only.
+                    move %= 3;
                 } else {
                     ///We query the two values, one after the other.
                     System.out.println("Which two values do you want to move? Enter the first followed by the second.");
@@ -67,6 +66,7 @@ public class Driver {
                         Thread.sleep(1000);
                         continue;
                     }
+                    move += 1;
                 }
             }
             ///We clear the console and print out the tower.
@@ -75,6 +75,7 @@ public class Driver {
             ///If the user solved it, say good job!
             if(!for_ai){
                 System.out.println("Great job! You've solved it!");
+                System.out.println("It took you " + move + " moves compared to the optimal amount which is " + (Math.pow(2.0, size) - 1) + " moves.");
             }
             ///Request a re-run.
             System.out.println("Care to try again? (enter true or false)");
