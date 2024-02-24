@@ -1,3 +1,1 @@
 Does reset() restack them or actually just rebuilds them? So say has no number 1s, after the conversion it will have 1s?
-
-ADD COMMENTS
