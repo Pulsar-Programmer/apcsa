@@ -4,6 +4,7 @@ Projects:
 
 | Lab | Name |
 | -------- | ------- |
+| Visual Sort (8) | SorterAborter |
 | Tower of Hanoi (8) | HanoiAnnoi |
 | Vehicle (7) | Vehickle |
 | New Years (6) | GraphicsLab |

@@ -1,0 +1,19 @@
+Visual Sort
+
+For each of the 3 Quadratic sorts (selection, insertion and bubble), create a
+visual demonstration of the sort being applied to a screen of some custom
+items called Piece. The Piece will have properties that can be used to sort.
+The Pieces being switched (or moved) should “highlight” and then swap to
+show the user each iteration of the sort. Be creative with how they
+“highlight” and how you demonstrate the swap. The user should input how
+many Pieces, what kind of sort to use and whether they will initially be
+arranged randomly or in reverse order. Put a delay before the process starts.
+-All sorts should be in their individual methods, along with redrawing of the
+panel. Keep track of all the array accessors and modifiers in the middle
+of the sort and communicate that at the end of the sort.
+Don’t forget about the title of the Table, you can write things there too.
+-Call the driver class “SortDriver” and the Piece class “Piece” and the Table
+class “Table”. Note the capital letters, the Table will have the array of Pieces.
+-Be creative with the piece and how you sort it, but makes sure it’s clear.
+-Make sure you don’t’ create a new frame after every run through but instead
+just reset the original frame.
