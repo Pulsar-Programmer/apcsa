@@ -19,8 +19,11 @@ public class Table extends JPanel{
         pieces = new Piece[len];
         for(var i = 0; i < pieces.length; i += 1){
             pieces[i] = new Piece();
+            pieces[i].setX(place_entity(i, len));
+            pieces[i].setSize((int)entity_size(len));
         }
         ptrs = new ArrayList<Pointer>();
+
     }
 
     ///This is the overridden paintComponent.
@@ -33,9 +36,10 @@ public class Table extends JPanel{
         draw_backdrop(g2d);
         ///We draw each piece at the appropriate point.
         for(var i = 0; i < pieces.length; i += 1){
-            pieces[i].setX(place_entity(i, pieces.length));
-            pieces[i].setSize((int)entity_size(pieces.length));
             pieces[i].draw(g2d);
+        }
+        for(var i = 0; i < ptrs.size(); i += 1){
+            ptrs.get(i).draw(g2d);
         }
     }
 
@@ -63,23 +67,56 @@ public class Table extends JPanel{
     //The sorts
 
     public void insertion_sort() {
+        System.out.println("Hello");
+        ptrs.add(new Pointer(Color.blue, place_entity(0, pieces.length)));
         for (int i = 1; i < pieces.length; i++) {
+            ptrs.get(0).move(place_entity(i, pieces.length));
+
             Piece temp = pieces[i];
+            temp.pick();
+
             int j = i - 1;
+            ptrs.add(new Pointer(Color.green, place_entity(j, pieces.length)));
+
             while (j >= 0 && pieces[j].getValue() > temp.getValue()) {
                 pieces[j + 1] = pieces[j];
                 j--;
+
             }
             pieces[j + 1] = temp;
         }
     }
 
-    public void bubble_sort(){
-        
+    public void bubble_sort() {
+        for (int i = 0; i < pieces.length; i++) {
+            boolean swapped = false;
+            for (int j = 1; j < pieces.length - i; j++) {
+                if (pieces[j - 1].compareTo(pieces[j]) > 0) {
+                    swapped = true;
+                    Piece temp = pieces[j - 1];
+                    pieces[j - 1] = pieces[j];
+                    pieces[j] = temp;
+                }
+            }
+            if (!swapped) {
+                break;
+            }
+        }
     }
     
-    public void selection_sort(){
-        
+    public void selection_sort() {
+        for (int i = 0; i < pieces.length - 1; i++) {
+            int min = i;
+            for (int j = 1 + i; j < pieces.length; j++) {
+                
+                if (pieces[min].compareTo(pieces[j]) > 0) {
+                    min = j;
+                }
+            }
+            Piece temp = pieces[i];
+            pieces[i] = pieces[min];
+            pieces[min] = temp;
+        }
     }
 
 

@@ -25,7 +25,11 @@ public class Pointer {
         this.color = color;
     }
 
-    public Pointer(){}
+    public Pointer(Color color, int x){
+        y = Table.y(60);
+        this.color = color;
+        this.x = x;
+    }
 
     public void draw(Graphics2D g2d){
         g2d.setColor(color);
@@ -37,6 +41,7 @@ public class Pointer {
     public void move(int x_lerp){
         var original_x = x;
         for(var i = 0; i < 1000; i++){
+            // SortDriver.sleep_safe(1);
             x += (x_lerp - original_x)/1000;
         }
     }

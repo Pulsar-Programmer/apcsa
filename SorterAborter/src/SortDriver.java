@@ -1,9 +1,4 @@
 import java.awt.Graphics2D;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-
-import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -60,6 +55,14 @@ public class SortDriver {
         //     Thread.sleep((long)(1000/speed));
         //     foundation.repaint();
         // }
+    }
+
+    public static void sleep_safe(long amt_ms){
+        try {
+            Thread.sleep(amt_ms);
+        } catch (Exception e) {
+
+        }
     }
 }
 //https://www.google.com/logos/fnbx/polyhedral_dice/d20_blank.png
