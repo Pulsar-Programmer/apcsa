@@ -18,7 +18,11 @@ public class Table extends JPanel{
 
     public Table(int len){
         pieces = new Piece[len];
-        reupdate();
+        for(var i = 0; i < pieces.length; i += 1){
+            pieces[i] = new Piece();
+            pieces[i].setX(place_entity(i, pieces.length));
+            pieces[i].setSize((int)entity_size(pieces.length));
+        }
         ptrs = new ArrayList<Pointer>();
 
     }
@@ -26,7 +30,6 @@ public class Table extends JPanel{
 
     public void reupdate(){
         for(var i = 0; i < pieces.length; i += 1){
-            pieces[i] = new Piece();
             pieces[i].setX(place_entity(i, pieces.length));
             pieces[i].setSize((int)entity_size(pieces.length));
         }
@@ -90,16 +93,16 @@ public class Table extends JPanel{
             ptrs.add(new Pointer(Color.green, place_entity(j, pieces.length), y(51) + 2 * entity_size(pieces.length), entity_size(pieces.length) / 2.));
 
             while (j >= 0 && pieces[j].getValue() > temp.getValue()) {
-                total_accesses += 2;
+                total_accesses += 1;
                 pieces[j].move(place_entity(j+1, pieces.length));
 
                 pieces[j + 1] = pieces[j]; total_accesses += 1; total_mutations += 1;
                 pieces[j] = temp; //Doesn't count - > only used for rendering
-
+                
                 j--;
                 ptrs.get(1).move(place_entity(j, pieces.length));
             }
-            if(pieces[j].getValue() <= temp.getValue()) {total_accesses+=2; }
+            if(j >= 0 && pieces[j].getValue() <= temp.getValue()) {total_accesses+=2; }
             
             ptrs.get(1).move(place_entity(j + 1, pieces.length));
             temp.move(place_entity(j+1, pieces.length));
