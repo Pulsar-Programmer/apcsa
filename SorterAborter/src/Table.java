@@ -17,6 +17,7 @@ public class Table extends JPanel{
     private static int total_mutations = 0;
 
     public Table(int len){
+        ///We assign pieces and iterate over them and assign them the correct places corresponding to the indices.
         pieces = new Piece[len];
         for(var i = 0; i < pieces.length; i += 1){
             pieces[i] = new Piece();
@@ -27,7 +28,7 @@ public class Table extends JPanel{
 
     }
     
-
+    ///This is used to recorrespond the indicies and movements.
     public void reupdate(){
         for(var i = 0; i < pieces.length; i += 1){
             pieces[i].setX(place_entity(i, pieces.length));
@@ -64,31 +65,38 @@ public class Table extends JPanel{
         g.fillRect(0, 0, x(100), y(100));
     }
 
+    ///We get the placement of each entity.
     public static int place_entity(int i, int total){
         final double size = entity_size(total);
         return (int)(size/2 + i * size * 1.5);
     }
 
+    ///The size of each element on the screen.
     public static double entity_size(int total){
         return x(100)/(1.5 * total + 0.5);
     }
 
+    ///To distribute the array in reverse order.
     public void distribute_reverse(){
         Arrays.sort(pieces, Comparator.reverseOrder());
     }
 
 
 
-    //The sorts
+    ///The sorts:
 
+    ///This is an insertion sort with infused animation.
     public void insertion_sort() {
+        ///We create a pointer.
         ptrs.add(new Pointer(Color.blue, place_entity(0, pieces.length), y(51) + entity_size(pieces.length), entity_size(pieces.length) / 2.));
         for (int i = 1; i < pieces.length; i++) {
+            ///We call the pointer.
             ptrs.get(0).move(place_entity(i, pieces.length));
 
+            ///We select the item.
             Piece temp = pieces[i]; total_accesses += 1;
             temp.pick();
-
+            ///We continue with pointers.
             int j = i - 1;
             ptrs.add(new Pointer(Color.green, place_entity(j, pieces.length), y(51) + 2 * entity_size(pieces.length), entity_size(pieces.length) / 2.));
 
@@ -97,11 +105,12 @@ public class Table extends JPanel{
                 pieces[j].move(place_entity(j+1, pieces.length));
 
                 pieces[j + 1] = pieces[j]; total_accesses += 1; total_mutations += 1;
-                pieces[j] = temp; //Doesn't count - > only used for rendering
-                
+                pieces[j] = temp; ///Doesn't count - > only used for rendering
+                ///We ensure to make movements for each operation.
                 j--;
                 ptrs.get(1).move(place_entity(j, pieces.length));
             }
+            ///We must add some accesses if it is true that the condition failed.
             if(j >= 0 && pieces[j].getValue() <= temp.getValue()) {total_accesses+=2; }
             
             ptrs.get(1).move(place_entity(j + 1, pieces.length));
@@ -115,7 +124,9 @@ public class Table extends JPanel{
         }
     }
 
+    ///Bubble sort with animation.
     public void bubble_sort() {
+        ///We track pointers and make movements based on the actual operations in the array.
         ptrs.add(new Pointer(Color.blue, place_entity(0, pieces.length), y(51) + entity_size(pieces.length), entity_size(pieces.length) / 2.));
         for (int i = 0; i < pieces.length; i++) {
             boolean swapped = false;
@@ -123,7 +134,7 @@ public class Table extends JPanel{
                 ptrs.get(0).move(place_entity(j, pieces.length));
                 if (pieces[j - 1].compareTo(pieces[j]) > 0) {
                     swapped = true;
-
+                    
                     Piece temp = pieces[j - 1]; total_accesses += 1;
                     var x1 = pieces[j].getX();
 
@@ -149,11 +160,13 @@ public class Table extends JPanel{
         }
     }
     
+    ///Selection sort with animation.
     public void selection_sort() {
         ptrs.add(new Pointer(Color.blue, place_entity(0, pieces.length), y(51) + entity_size(pieces.length), entity_size(pieces.length) / 2.));
         for (int i = 0; i < pieces.length - 1; i++) {
             ptrs.get(0).move(place_entity(i, pieces.length));
             int min = i;
+            ///We pick the minimum.
             pieces[min].pick();
 
             ptrs.add(new Pointer(Color.green, place_entity(0, pieces.length), y(51) + 2 * entity_size(pieces.length), entity_size(pieces.length) /2.));
@@ -163,12 +176,13 @@ public class Table extends JPanel{
                 if (pieces[min].compareTo(pieces[j]) > 0) {
                     pieces[min].place();
                     min = j;
+                    ///Replace this picking.
                     pieces[min].pick();
                 }
                 total_accesses += 2;
             }
             ptrs.remove(1);
-
+            ///And we eventually do some swapping.
             Piece temp = pieces[i]; total_accesses += 1;
             pieces[i].pick();
             var x1 = pieces[min].getX();

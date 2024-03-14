@@ -38,14 +38,14 @@ public class Pointer {
         this.x = x;
         this.size = size;
     }
-
+    ///We draw the pointer.
     public void draw(Graphics2D g2d){
         g2d.setColor(color);
         g2d.fillPolygon(new int[]{Piece.perce(x, 0.5, size), Piece.perce(x, 1, size), Piece.perce(x, 1.5, size)}, new int[]{Piece.perce(y, 1., size), (int)y, Piece.perce(y, 1., size)}, 3);
         g2d.setColor(Color.black);
         g2d.drawPolygon(new int[]{Piece.perce(x, 0.5, size), Piece.perce(x, 1, size), Piece.perce(x, 1.5, size)}, new int[]{Piece.perce(y, 1., size), (int)y, Piece.perce(y, 1., size)}, 3);
     }
-
+    ///We slowly lerp the pointer.
     public void move(int x_lerp){
         var original_x = x;
         for(var i = 0; i < 500; i++){

@@ -1,5 +1,4 @@
 import java.awt.Color;
-import java.awt.Font;
 
 public class Piece implements Comparable<Piece> {
     private int value;
@@ -51,6 +50,7 @@ public class Piece implements Comparable<Piece> {
     
 
     public Piece(){
+        ///We initialize properties and roll the dice.
         int[] choices = {4, 6, 8, 10, 12, 20};
         type = choices[(int)(Math.random() * choices.length)];
         value = (int)(Math.random() * type + 1);
@@ -59,6 +59,7 @@ public class Piece implements Comparable<Piece> {
     }
 
     public void draw(java.awt.Graphics2D g){
+        ///We change the shape depending on the solid of the dice.
         int x = (int)this.x;
         int y = (int)this.y;
         switch (type) {
@@ -102,7 +103,7 @@ public class Piece implements Comparable<Piece> {
         
             default : break;
         }
-
+        ///We set the color to black and draw a circle of dots for the dice values.
         g.setColor(Color.black);
         for(var i = 0; i < value; i += 1){
             var _x = 20 * Math.floor(1 + i / (value * 2. * Math.PI)) * Math.cos(i * 2./value * Math.PI + dot_offset) + perce(x, 0.5, size) - size/20.;
@@ -111,10 +112,12 @@ public class Piece implements Comparable<Piece> {
         }
     }
 
+    ///A helper function that acts as a weighted midpoint.
     public static int perce(double x, double per, double size){
         return (int)(x + per * size);
     }
 
+    ///To pick up an object.
     public void pick(){
         for(var i = 0; i < 500; i++){
             SortDriver.sleep_safe(1);
@@ -122,6 +125,7 @@ public class Piece implements Comparable<Piece> {
         }
     }
 
+    ///To move or slowly lerp an object.
     public void move(int x_lerp){
         var original_x = x;
         for(var i = 0; i < 500; i++){
@@ -129,7 +133,8 @@ public class Piece implements Comparable<Piece> {
             x += (x_lerp - original_x)/500.0;
         }
     }
-    
+
+    ///Put an object back down.
     public void place(){
         for(var i = 0; i < 500; i++){
             SortDriver.sleep_safe(1);
