@@ -49,7 +49,7 @@ public class Table extends JPanel{
     }
 
     public static double entity_size(int total){
-        return x(100)/total;
+        return x(100)/(1.5 * total + 0.5);
     }
 
     public void distribute_reverse(){

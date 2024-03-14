@@ -34,10 +34,13 @@ public class SortDriver {
         JOptionPane.QUESTION_MESSAGE, null, choices, choices[0]);
 
         var my_table = new Table(len);
+
         if(option.equals("Reverse Distribution")){
+            System.out.println("Trests");
             my_table.distribute_reverse();
         }
         foundation.add(my_table);
+        foundation.setVisible(true);
 
         ///This is the main game loop where we update the components.
         while(true){
