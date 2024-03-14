@@ -34,7 +34,8 @@ public class Table extends JPanel{
         ///We draw each piece at the appropriate point.
         for(var i = 0; i < pieces.length; i += 1){
             pieces[i].setX(place_entity(i, pieces.length));
-            pieces[i].draw(g2d, (int)entity_size(pieces.length));
+            pieces[i].setSize((int)entity_size(pieces.length));
+            pieces[i].draw(g2d);
         }
     }
 

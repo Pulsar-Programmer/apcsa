@@ -25,11 +25,11 @@ public class SortDriver {
         }
 
         ///We propose a default speed. If asking the user succeeds, then we overwrite it.
-        double speed = 1000;
-        try{speed = Double.parseDouble(JOptionPane.showInputDialog("Enter the speed of progression:"));} catch(Exception _e) {};
-        if(speed <= 0){
-            speed = 1000;
-        }
+        // double speed = 1000;
+        // try{speed = Double.parseDouble(JOptionPane.showInputDialog("Enter the speed of progression:"));} catch(Exception _e) {};
+        // if(speed <= 0){
+        //     speed = 1000;
+        // }
         
         var my_table = new Table(len);
         {
