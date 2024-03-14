@@ -94,17 +94,27 @@ public class Table extends JPanel{
     public void bubble_sort() {
         ptrs.add(new Pointer(Color.blue, place_entity(0, pieces.length), y(62)));
         for (int i = 0; i < pieces.length; i++) {
-            ptrs.get(0).move(place_entity(i, pieces.length));
+            // ptrs.get(0).move(place_entity(i, pieces.length));
             boolean swapped = false;
-
             for (int j = 1; j < pieces.length - i; j++) {
+                ptrs.get(0).move(place_entity(j, pieces.length));
                 if (pieces[j - 1].compareTo(pieces[j]) > 0) {
                     swapped = true;
 
                     Piece temp = pieces[j - 1];
+
+                    var x1 = pieces[j].getX();
+                    pieces[j].pick();
+                    pieces[j-1].pick();
+                    pieces[j].move((int)pieces[j-1].getX());
+                    pieces[j-1].move((int)x1);
+                    pieces[j].place();
+                    pieces[j-1].place();
+
                     pieces[j - 1] = pieces[j];
+
                     pieces[j] = temp;
-                    
+
                 }
             }
             if (!swapped) {

@@ -40,9 +40,9 @@ public class Pointer {
 
     public void move(int x_lerp){
         var original_x = x;
-        for(var i = 0; i < 1000; i++){
+        for(var i = 0; i < 500; i++){
             SortDriver.sleep_safe(1);
-            x += (x_lerp - original_x)/1000.0;
+            x += (x_lerp - original_x)/500.0;
         }
     }
 }

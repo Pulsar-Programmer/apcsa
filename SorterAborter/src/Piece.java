@@ -107,24 +107,24 @@ public class Piece implements Comparable<Piece> {
     }
 
     public void pick(){
-        for(var i = 0; i < 1000; i++){
+        for(var i = 0; i < 500; i++){
             SortDriver.sleep_safe(1);
-            y -= size/1000.0;
+            y -= size/500.0;
         }
     }
 
     public void move(int x_lerp){
         var original_x = x;
-        for(var i = 0; i < 1000; i++){
+        for(var i = 0; i < 500; i++){
             SortDriver.sleep_safe(1);
-            x += (x_lerp - original_x)/1000.0;
+            x += (x_lerp - original_x)/500.0;
         }
     }
     
     public void place(){
-        for(var i = 0; i < 1000; i++){
+        for(var i = 0; i < 500; i++){
             SortDriver.sleep_safe(1);
-            y += size/1000.0;
+            y += size/500.0;
         }
     }
 
