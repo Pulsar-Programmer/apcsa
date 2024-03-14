@@ -33,7 +33,8 @@ public class Table extends JPanel{
         draw_backdrop(g2d);
         ///We draw each piece at the appropriate point.
         for(var i = 0; i < pieces.length; i += 1){
-            pieces[i].draw(g2d, place_entity(i, pieces.length), (int)entity_size(pieces.length));
+            pieces[i].setX(place_entity(i, pieces.length));
+            pieces[i].draw(g2d, (int)entity_size(pieces.length));
         }
     }
 

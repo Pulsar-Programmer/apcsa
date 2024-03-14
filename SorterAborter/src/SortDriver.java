@@ -29,18 +29,23 @@ public class SortDriver {
             speed = 1000;
         }
         
-        String[] choices = {"Random Distribution", "Reverse Distribution"};
-        String option = (String) JOptionPane.showInputDialog(null, "Distribution Method", "How should they be ordered on the table?", 
-        JOptionPane.QUESTION_MESSAGE, null, choices, choices[0]);
-
         var my_table = new Table(len);
+        {
+            String[] choices = {"Random Distribution", "Reverse Distribution"};
+            String option = (String) JOptionPane.showInputDialog(null, "Distribution Method", "How should they be ordered on the table?", 
+            JOptionPane.QUESTION_MESSAGE, null, choices, choices[0]);
 
-        if(option.equals("Reverse Distribution")){
-            System.out.println("Trests");
-            my_table.distribute_reverse();
+            if(option.equals("Reverse Distribution")){
+                my_table.distribute_reverse();
+            }
         }
         foundation.add(my_table);
         foundation.setVisible(true);
+        
+        String[] choices = {"Bubble Sort", "Selection Sort", "Insertion Sort"};
+        String option = (String) JOptionPane.showInputDialog(null, "Sort Method", "What method should be used to sort the elements?", 
+        JOptionPane.QUESTION_MESSAGE, null, choices, choices[0]);
+
 
         ///This is the main game loop where we update the components.
         while(true){
