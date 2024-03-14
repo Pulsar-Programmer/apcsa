@@ -1,5 +1,7 @@
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+///Triple comments are intended to be read.
+//Double comments are for dev.
 
 public class SortDriver {
     public static void main(String[] args) throws Exception {        
@@ -18,38 +20,45 @@ public class SortDriver {
             len = 10;
         }
 
-        ///We propose a default speed. If asking the user succeeds, then we overwrite it.
+        //We propose a default speed. If asking the user succeeds, then we overwrite it.
         // double speed = 1000;
         // try{speed = Double.parseDouble(JOptionPane.showInputDialog("Enter the speed of progression:"));} catch(Exception _e) {};
         // if(speed <= 0){
         //     speed = 1000;
         // }
         
+        ///We create our table.
         var my_table = new Table(len);
         {
+            ///We decide how to distribute.
             String[] choices = {"Random Distribution", "Reverse Distribution"};
             String option = (String) JOptionPane.showInputDialog(null, "Distribution Method", "How should they be ordered on the table?", 
             JOptionPane.QUESTION_MESSAGE, null, choices, choices[0]);
 
+            ///If we distribute reverse, we must update the creation and sort it properly.
             if(option.equals("Reverse Distribution")){
+                // System.out.println();
                 my_table.distribute_reverse();
                 my_table.reupdate();
             }
         }
+        ///We must add our components.
         foundation.add(my_table);
         foundation.setVisible(true);
 
+        ///We msut select our preferred sort type.
         String[] choices = {"Bubble Sort", "Selection Sort", "Insertion Sort"};
         String option = (String) JOptionPane.showInputDialog(null, "Sort Method", "What method should be used to sort the elements?", 
         JOptionPane.QUESTION_MESSAGE, null, choices, choices[0]);
 
-        // Spawn a second thread to periodically call repaint
+        ///Spawn a second thread to periodically call repaint.
         new Thread(() -> {
             while(true){
                 foundation.repaint();
             }
         }).start();
 
+        ///We choose our type of sort.
         if(option.equals("Bubble Sort")){
             my_table.bubble_sort();
         } else if(option.equals("Selection Sort")){
@@ -57,13 +66,9 @@ public class SortDriver {
         } else {
             my_table.insertion_sort();
         }
-        ///This is the main game loop where we update the components.
-        // while(true){
-        //     Thread.sleep((long)(1000/speed));
-        //     foundation.repaint();
-        // }
     }
 
+    ///A method to sleep safely.
     public static void sleep_safe(long amt_ms){
         try {
             Thread.sleep(amt_ms);

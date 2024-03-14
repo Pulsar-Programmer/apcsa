@@ -5,6 +5,7 @@ import java.util.Comparator;
 import javax.swing.JPanel;
 import java.awt.Toolkit;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 
@@ -21,6 +22,7 @@ public class Table extends JPanel{
         ptrs = new ArrayList<Pointer>();
 
     }
+    
 
     public void reupdate(){
         for(var i = 0; i < pieces.length; i += 1){
@@ -42,9 +44,15 @@ public class Table extends JPanel{
         for(var i = 0; i < pieces.length; i += 1){
             pieces[i].draw(g2d);
         }
+        ///We draw all pointers.
         for(var i = 0; i < ptrs.size(); i += 1){
             ptrs.get(i).draw(g2d);
         }
+        ///We draw the variables.
+        g2d.setColor(Color.black);
+        g2d.setFont(new Font("Arial", Font.BOLD, 20));
+        g2d.drawString("Total Accesses: " + total_accesses, 100, 100);
+        g2d.drawString("Total Mutations: " + total_mutations, 100, 200);
     }
 
     ///Here we draw the background.
@@ -75,28 +83,30 @@ public class Table extends JPanel{
         for (int i = 1; i < pieces.length; i++) {
             ptrs.get(0).move(place_entity(i, pieces.length));
 
-            Piece temp = pieces[i];
+            Piece temp = pieces[i]; total_accesses += 1;
             temp.pick();
 
             int j = i - 1;
             ptrs.add(new Pointer(Color.green, place_entity(j, pieces.length), y(51) + 2 * entity_size(pieces.length), entity_size(pieces.length) / 2.));
 
             while (j >= 0 && pieces[j].getValue() > temp.getValue()) {
-                
+                total_accesses += 2;
                 pieces[j].move(place_entity(j+1, pieces.length));
 
-                pieces[j + 1] = pieces[j];
-                pieces[j] = temp;
+                pieces[j + 1] = pieces[j]; total_accesses += 1; total_mutations += 1;
+                pieces[j] = temp; //Doesn't count - > only used for rendering
 
                 j--;
                 ptrs.get(1).move(place_entity(j, pieces.length));
             }
+            if(pieces[j].getValue() <= temp.getValue()) {total_accesses+=2; }
+            
             ptrs.get(1).move(place_entity(j + 1, pieces.length));
             temp.move(place_entity(j+1, pieces.length));
 
             temp.place();
 
-            pieces[j + 1] = temp;
+            pieces[j + 1] = temp; total_mutations += 1;
 
             ptrs.remove(1);
         }
@@ -105,14 +115,13 @@ public class Table extends JPanel{
     public void bubble_sort() {
         ptrs.add(new Pointer(Color.blue, place_entity(0, pieces.length), y(51) + entity_size(pieces.length), entity_size(pieces.length) / 2.));
         for (int i = 0; i < pieces.length; i++) {
-            // ptrs.get(0).move(place_entity(i, pieces.length));
             boolean swapped = false;
             for (int j = 1; j < pieces.length - i; j++) {
                 ptrs.get(0).move(place_entity(j, pieces.length));
                 if (pieces[j - 1].compareTo(pieces[j]) > 0) {
                     swapped = true;
 
-                    Piece temp = pieces[j - 1];
+                    Piece temp = pieces[j - 1]; total_accesses += 1;
                     var x1 = pieces[j].getX();
 
                     pieces[j].pick();
@@ -124,11 +133,12 @@ public class Table extends JPanel{
                     pieces[j].place();
                     pieces[j-1].place();
 
-                    pieces[j - 1] = pieces[j];
+                    pieces[j - 1] = pieces[j]; total_accesses += 1; total_mutations += 1;
 
-                    pieces[j] = temp;
+                    pieces[j] = temp; total_mutations += 1;
 
                 }
+                total_accesses += 2;
             }
             if (!swapped) {
                 break;
@@ -152,10 +162,11 @@ public class Table extends JPanel{
                     min = j;
                     pieces[min].pick();
                 }
+                total_accesses += 2;
             }
             ptrs.remove(1);
 
-            Piece temp = pieces[i];
+            Piece temp = pieces[i]; total_accesses += 1;
             pieces[i].pick();
             var x1 = pieces[min].getX();
 
@@ -165,8 +176,8 @@ public class Table extends JPanel{
             pieces[min].place();
             pieces[i].place();
 
-            pieces[i] = pieces[min];
-            pieces[min] = temp;
+            pieces[i] = pieces[min]; total_accesses += 1; total_mutations += 1;
+            pieces[min] = temp; total_mutations += 1;
         }
     }
 
@@ -178,6 +189,46 @@ public class Table extends JPanel{
     ///Here, we intend to get the maximum x value that the person may scale their screen up to. The input is mapped between this range.
     public static int y(double pct){
         return (int) (Toolkit.getDefaultToolkit().getScreenSize().getHeight() * pct / 100.0);
+    }
+
+
+    public Piece[] getPieces() {
+        return pieces;
+    }
+
+
+    public void setPieces(Piece[] pieces) {
+        this.pieces = pieces;
+    }
+
+
+    public ArrayList<Pointer> getPtrs() {
+        return ptrs;
+    }
+
+
+    public void setPtrs(ArrayList<Pointer> ptrs) {
+        this.ptrs = ptrs;
+    }
+
+
+    public static int getTotal_accesses() {
+        return total_accesses;
+    }
+
+
+    public static void setTotal_accesses(int total_accesses) {
+        Table.total_accesses = total_accesses;
+    }
+
+
+    public static int getTotal_mutations() {
+        return total_mutations;
+    }
+
+
+    public static void setTotal_mutations(int total_mutations) {
+        Table.total_mutations = total_mutations;
     }
 }
 
