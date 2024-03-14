@@ -1,12 +1,14 @@
+import java.awt.Graphics2D;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 public class SortDriver {
-    public static void main(String[] args) throws Exception {
-
-        
-        
-        
+    public static void main(String[] args) throws Exception {        
         ///We create our frame and add settings.
         JFrame foundation = new JFrame();
         foundation.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -41,17 +43,23 @@ public class SortDriver {
         }
         foundation.add(my_table);
         foundation.setVisible(true);
-        
+
         String[] choices = {"Bubble Sort", "Selection Sort", "Insertion Sort"};
         String option = (String) JOptionPane.showInputDialog(null, "Sort Method", "What method should be used to sort the elements?", 
         JOptionPane.QUESTION_MESSAGE, null, choices, choices[0]);
 
-
-        ///This is the main game loop where we update the components.
-        while(true){
-            Thread.sleep((long)(1000/speed));
-            foundation.repaint();
+        if(option.equals("Bubble Sort")){
+            my_table.bubble_sort();
+        } else if(option.equals("Selection Sort")){
+            my_table.selection_sort();
+        } else {
+            my_table.insertion_sort();
         }
+        ///This is the main game loop where we update the components.
+        // while(true){
+        //     Thread.sleep((long)(1000/speed));
+        //     foundation.repaint();
+        // }
     }
 }
 //https://www.google.com/logos/fnbx/polyhedral_dice/d20_blank.png

@@ -1,4 +1,5 @@
 import java.awt.Color;
+import java.awt.Graphics2D;
 
 public class Pointer {
     private int x;
@@ -26,5 +27,10 @@ public class Pointer {
 
     public Pointer(){}
 
-    
+    public void draw(Graphics2D g2d){
+        g2d.setColor(color);
+        g2d.fillPolygon(new int[]{x, x/2 + 50, x + 100}, new int[]{y + 100, y, y + 100}, 3);
+        g2d.setColor(Color.black);
+        g2d.drawPolygon(new int[]{x, x/2 + 50, x + 100}, new int[]{y + 100, y, y + 100}, 3);
+    }
 }

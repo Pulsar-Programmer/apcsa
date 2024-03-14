@@ -61,14 +61,22 @@ public class Table extends JPanel{
 
     //The sorts
 
-    public void insertion_sort(){
-
+    public void insertion_sort() {
+        for (int i = 1; i < pieces.length; i++) {
+            Piece temp = pieces[i];
+            int j = i - 1;
+            while (j >= 0 && pieces[j].getValue() > temp.getValue()) {
+                pieces[j + 1] = pieces[j];
+                j--;
+            }
+            pieces[j + 1] = temp;
+        }
     }
 
     public void bubble_sort(){
         
     }
-
+    
     public void selection_sort(){
         
     }
