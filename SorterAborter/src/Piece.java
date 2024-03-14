@@ -9,6 +9,7 @@ public class Piece implements Comparable<Piece> {
     private double y;
 
     private int size;
+    private double dot_offset;
 
     public int getValue() {
         return value;
@@ -40,6 +41,12 @@ public class Piece implements Comparable<Piece> {
     public void setSize(int size) {
         this.size = size;
     }
+    public double getDot_offset() {
+        return dot_offset;
+    }
+    public void setDot_offset(double dot_offset) {
+        this.dot_offset = dot_offset;
+    }
     
     
 
@@ -48,6 +55,7 @@ public class Piece implements Comparable<Piece> {
         type = choices[(int)(Math.random() * choices.length)];
         value = (int)(Math.random() * type + 1);
         y = Table.y(50);
+        dot_offset = Math.random() * Math.PI;
     }
 
     public void draw(java.awt.Graphics2D g){
@@ -95,11 +103,12 @@ public class Piece implements Comparable<Piece> {
             default : break;
         }
 
-        // Set the font (optional, adjust size as needed)
-        g.setFont(new Font("Arial", Font.BOLD, 12));
-
         g.setColor(Color.black);
-        g.drawString("" + value, perce(x, 0.5, size) - 3, perce(y, 0.5, size) + 3);
+        for(var i = 0; i < value; i += 1){
+            var _x = 20 * Math.floor(1 + i / (value * 2. * Math.PI)) * Math.cos(i * 2./value * Math.PI + dot_offset) + perce(x, 0.5, size) - size/20.;
+            var _y = 20 * Math.floor(1 + i / (value * 2. * Math.PI)) * Math.sin(i * 2./value * Math.PI + dot_offset) + perce(y, 0.5, size) - size/20.;
+            g.fillOval((int)_x, (int)_y, (int)(size/10.0), (int)(size/10.0));
+        }
     }
 
     public int perce(double x, double per, double size){

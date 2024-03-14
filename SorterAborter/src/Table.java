@@ -67,32 +67,39 @@ public class Table extends JPanel{
     //The sorts
 
     public void insertion_sort() {
-        ptrs.add(new Pointer(Color.blue, place_entity(0, pieces.length), y(62)));
+        ptrs.add(new Pointer(Color.blue, place_entity(0, pieces.length), y(51) + entity_size(pieces.length), entity_size(pieces.length) / 2.));
         for (int i = 1; i < pieces.length; i++) {
             ptrs.get(0).move(place_entity(i, pieces.length));
+
             Piece temp = pieces[i];
             temp.pick();
 
             int j = i - 1;
-            ptrs.add(new Pointer(Color.green, place_entity(j, pieces.length), y(74)));
+            ptrs.add(new Pointer(Color.green, place_entity(j, pieces.length), y(51) + 2 * entity_size(pieces.length), entity_size(pieces.length) / 2.));
 
             while (j >= 0 && pieces[j].getValue() > temp.getValue()) {
+                
+                pieces[j].move(place_entity(j+1, pieces.length));
+
                 pieces[j + 1] = pieces[j];
-                pieces[j].move((int)pieces[j + 1].getX());
+                pieces[j] = temp;
 
                 j--;
                 ptrs.get(1).move(place_entity(j, pieces.length));
             }
+            ptrs.get(1).move(place_entity(j + 1, pieces.length));
+            temp.move(place_entity(j+1, pieces.length));
+
             temp.place();
+
             pieces[j + 1] = temp;
 
             ptrs.remove(1);
         }
-        ptrs.remove(0);
     }
 
     public void bubble_sort() {
-        ptrs.add(new Pointer(Color.blue, place_entity(0, pieces.length), y(62)));
+        ptrs.add(new Pointer(Color.blue, place_entity(0, pieces.length), y(51) + entity_size(pieces.length), entity_size(pieces.length) / 2.));
         for (int i = 0; i < pieces.length; i++) {
             // ptrs.get(0).move(place_entity(i, pieces.length));
             boolean swapped = false;
@@ -102,12 +109,14 @@ public class Table extends JPanel{
                     swapped = true;
 
                     Piece temp = pieces[j - 1];
-
                     var x1 = pieces[j].getX();
+
                     pieces[j].pick();
                     pieces[j-1].pick();
+
                     pieces[j].move((int)pieces[j-1].getX());
                     pieces[j-1].move((int)x1);
+
                     pieces[j].place();
                     pieces[j-1].place();
 
@@ -124,15 +133,34 @@ public class Table extends JPanel{
     }
     
     public void selection_sort() {
+        ptrs.add(new Pointer(Color.blue, place_entity(0, pieces.length), y(51) + entity_size(pieces.length), entity_size(pieces.length) / 2.));
         for (int i = 0; i < pieces.length - 1; i++) {
+            ptrs.get(0).move(place_entity(i, pieces.length));
             int min = i;
+            pieces[min].pick();
+
+            ptrs.add(new Pointer(Color.green, place_entity(0, pieces.length), y(51) + 2 * entity_size(pieces.length), entity_size(pieces.length) /2.));
             for (int j = 1 + i; j < pieces.length; j++) {
-                
+                ptrs.get(1).move(place_entity(j, pieces.length));
+
                 if (pieces[min].compareTo(pieces[j]) > 0) {
+                    pieces[min].place();
                     min = j;
+                    pieces[min].pick();
                 }
             }
+            ptrs.remove(1);
+
             Piece temp = pieces[i];
+            pieces[i].pick();
+            var x1 = pieces[min].getX();
+
+            pieces[min].move((int)pieces[i].getX());
+            pieces[i].move((int)x1);
+
+            pieces[min].place();
+            pieces[i].place();
+
             pieces[i] = pieces[min];
             pieces[min] = temp;
         }

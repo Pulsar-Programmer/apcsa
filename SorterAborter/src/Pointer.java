@@ -4,6 +4,7 @@ import java.awt.Graphics2D;
 public class Pointer {
     private double x;
     private double y;
+    private double size;
     private Color color;
 
     public double getX() {
@@ -24,11 +25,18 @@ public class Pointer {
     public void setColor(Color color) {
         this.color = color;
     }
+    public double getSize() {
+        return size;
+    }
+    public void setSize(double size) {
+        this.size = size;
+    }
 
-    public Pointer(Color color, double x, double y){
+    public Pointer(Color color, double x, double y, double size){
         this.y = y;
         this.color = color;
         this.x = x;
+        this.size = size;
     }
 
     public void draw(Graphics2D g2d){
