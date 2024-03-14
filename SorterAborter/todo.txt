@@ -17,3 +17,5 @@ class “Table”. Note the capital letters, the Table will have the array of Pi
 -Be creative with the piece and how you sort it, but makes sure it’s clear.
 -Make sure you don’t’ create a new frame after every run through but instead
 just reset the original frame.
+
+Create the accessors and mutators and increment them for each time they are used.
