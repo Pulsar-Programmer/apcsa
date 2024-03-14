@@ -5,8 +5,8 @@ public class Piece implements Comparable<Piece> {
     private int value;
     private int type;
 
-    private int x;
-    private int y;
+    private double x;
+    private double y;
 
     private int size;
 
@@ -22,16 +22,16 @@ public class Piece implements Comparable<Piece> {
     public void setType(int type) {
         this.type = type;
     }
-    public int getX() {
+    public double getX() {
         return x;
     }
-    public void setX(int x) {
+    public void setX(double x) {
         this.x = x;
     }
-    public int getY() {
+    public double getY() {
         return y;
     }
-    public void setY(int y) {
+    public void setY(double y) {
         this.y = y;
     }
     public int getSize() {
@@ -51,6 +51,8 @@ public class Piece implements Comparable<Piece> {
     }
 
     public void draw(java.awt.Graphics2D g){
+        int x = (int)this.x;
+        int y = (int)this.y;
         switch (type) {
             case 4 : {
                 g.setColor(new Color(0x24A146));
@@ -107,7 +109,7 @@ public class Piece implements Comparable<Piece> {
     public void pick(){
         for(var i = 0; i < 1000; i++){
             SortDriver.sleep_safe(1);
-            y -= size/1000;
+            y -= size/1000.0;
         }
     }
 
@@ -115,14 +117,14 @@ public class Piece implements Comparable<Piece> {
         var original_x = x;
         for(var i = 0; i < 1000; i++){
             SortDriver.sleep_safe(1);
-            x += (x_lerp - original_x)/1000;
+            x += (x_lerp - original_x)/1000.0;
         }
     }
     
     public void place(){
         for(var i = 0; i < 1000; i++){
             SortDriver.sleep_safe(1);
-            y += size/1000;
+            y += size/1000.0;
         }
     }
 

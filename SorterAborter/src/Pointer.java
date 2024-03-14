@@ -2,20 +2,20 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 
 public class Pointer {
-    private int x;
-    private int y;
+    private double x;
+    private double y;
     private Color color;
 
-    public int getX() {
+    public double getX() {
         return x;
     }
-    public void setX(int x) {
+    public void setX(double x) {
         this.x = x;
     }
-    public int getY() {
+    public double getY() {
         return y;
     }
-    public void setY(int y) {
+    public void setY(double y) {
         this.y = y;
     }
     public Color getColor() {
@@ -25,7 +25,7 @@ public class Pointer {
         this.color = color;
     }
 
-    public Pointer(Color color, int x, int y){
+    public Pointer(Color color, double x, double y){
         this.y = y;
         this.color = color;
         this.x = x;
@@ -33,16 +33,16 @@ public class Pointer {
 
     public void draw(Graphics2D g2d){
         g2d.setColor(color);
-        g2d.fillPolygon(new int[]{x, (2 * x+50)/2, x + 50}, new int[]{y + 50, y, y + 50}, 3);
+        g2d.fillPolygon(new int[]{(int)x + 25, (2 * (int)x+50)/2 + 25, (int)x + 50 + 25}, new int[]{(int)y + 50, (int)y, (int)y + 50}, 3);
         g2d.setColor(Color.black);
-        g2d.drawPolygon(new int[]{x, (2 * x+50)/2, x + 50}, new int[]{y + 50, y, y + 50}, 3);
+        g2d.drawPolygon(new int[]{(int)x + 25, (2 * (int)x+50)/2 + 25, (int)x + 50 + 25}, new int[]{(int)y + 50, (int)y, (int)y + 50}, 3);
     }
 
     public void move(int x_lerp){
         var original_x = x;
         for(var i = 0; i < 1000; i++){
             SortDriver.sleep_safe(1);
-            x += (x_lerp - original_x)/1000;
+            x += (x_lerp - original_x)/1000.0;
         }
     }
 }
