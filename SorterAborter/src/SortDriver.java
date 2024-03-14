@@ -1,6 +1,7 @@
 import java.awt.Graphics2D;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
 
 public class SortDriver {
     public static void main(String[] args) throws Exception {        
@@ -42,6 +43,13 @@ public class SortDriver {
         String[] choices = {"Bubble Sort", "Selection Sort", "Insertion Sort"};
         String option = (String) JOptionPane.showInputDialog(null, "Sort Method", "What method should be used to sort the elements?", 
         JOptionPane.QUESTION_MESSAGE, null, choices, choices[0]);
+
+        // Spawn a second thread to periodically call repaint
+        new Thread(() -> {
+            while(true){
+                foundation.repaint();
+            }
+        }).start();
 
         if(option.equals("Bubble Sort")){
             my_table.bubble_sort();

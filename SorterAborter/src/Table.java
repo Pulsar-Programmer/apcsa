@@ -67,23 +67,23 @@ public class Table extends JPanel{
     //The sorts
 
     public void insertion_sort() {
-        System.out.println("Hello");
-        ptrs.add(new Pointer(Color.blue, place_entity(0, pieces.length)));
+        ptrs.add(new Pointer(Color.blue, place_entity(0, pieces.length), y(62)));
         for (int i = 1; i < pieces.length; i++) {
             ptrs.get(0).move(place_entity(i, pieces.length));
-
+            
             Piece temp = pieces[i];
             temp.pick();
 
             int j = i - 1;
-            ptrs.add(new Pointer(Color.green, place_entity(j, pieces.length)));
+            ptrs.add(new Pointer(Color.green, place_entity(j, pieces.length), y(74)));
 
             while (j >= 0 && pieces[j].getValue() > temp.getValue()) {
                 pieces[j + 1] = pieces[j];
                 j--;
-
             }
             pieces[j + 1] = temp;
+
+            ptrs.remove(1);
         }
     }
 
