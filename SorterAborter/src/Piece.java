@@ -111,7 +111,7 @@ public class Piece implements Comparable<Piece> {
         }
     }
 
-    public int perce(double x, double per, double size){
+    public static int perce(double x, double per, double size){
         return (int)(x + per * size);
     }
 

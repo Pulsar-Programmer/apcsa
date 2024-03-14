@@ -1,7 +1,5 @@
-import java.awt.Graphics2D;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import javax.swing.SwingUtilities;
 
 public class SortDriver {
     public static void main(String[] args) throws Exception {        
@@ -35,6 +33,7 @@ public class SortDriver {
 
             if(option.equals("Reverse Distribution")){
                 my_table.distribute_reverse();
+                my_table.reupdate();
             }
         }
         foundation.add(my_table);

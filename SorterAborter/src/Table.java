@@ -17,13 +17,17 @@ public class Table extends JPanel{
 
     public Table(int len){
         pieces = new Piece[len];
-        for(var i = 0; i < pieces.length; i += 1){
-            pieces[i] = new Piece();
-            pieces[i].setX(place_entity(i, len));
-            pieces[i].setSize((int)entity_size(len));
-        }
+        reupdate();
         ptrs = new ArrayList<Pointer>();
 
+    }
+
+    public void reupdate(){
+        for(var i = 0; i < pieces.length; i += 1){
+            pieces[i] = new Piece();
+            pieces[i].setX(place_entity(i, pieces.length));
+            pieces[i].setSize((int)entity_size(pieces.length));
+        }
     }
 
     ///This is the overridden paintComponent.

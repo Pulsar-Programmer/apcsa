@@ -41,9 +41,9 @@ public class Pointer {
 
     public void draw(Graphics2D g2d){
         g2d.setColor(color);
-        g2d.fillPolygon(new int[]{(int)x + 25, (2 * (int)x+50)/2 + 25, (int)x + 50 + 25}, new int[]{(int)y + 50, (int)y, (int)y + 50}, 3);
+        g2d.fillPolygon(new int[]{Piece.perce(x, 0.5, size), Piece.perce(x, 1, size), Piece.perce(x, 1.5, size)}, new int[]{Piece.perce(y, 1., size), (int)y, Piece.perce(y, 1., size)}, 3);
         g2d.setColor(Color.black);
-        g2d.drawPolygon(new int[]{(int)x + 25, (2 * (int)x+50)/2 + 25, (int)x + 50 + 25}, new int[]{(int)y + 50, (int)y, (int)y + 50}, 3);
+        g2d.drawPolygon(new int[]{Piece.perce(x, 0.5, size), Piece.perce(x, 1, size), Piece.perce(x, 1.5, size)}, new int[]{Piece.perce(y, 1., size), (int)y, Piece.perce(y, 1., size)}, 3);
     }
 
     public void move(int x_lerp){
