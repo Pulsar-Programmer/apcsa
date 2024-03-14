@@ -70,7 +70,6 @@ public class Table extends JPanel{
         ptrs.add(new Pointer(Color.blue, place_entity(0, pieces.length), y(62)));
         for (int i = 1; i < pieces.length; i++) {
             ptrs.get(0).move(place_entity(i, pieces.length));
-            
             Piece temp = pieces[i];
             temp.pick();
 
@@ -79,12 +78,16 @@ public class Table extends JPanel{
 
             while (j >= 0 && pieces[j].getValue() > temp.getValue()) {
                 pieces[j + 1] = pieces[j];
+                pieces[j].move(pieces[j + 1].getX());
+
                 j--;
+                ptrs.get(1).move(place_entity(j, pieces.length));
             }
             pieces[j + 1] = temp;
 
             ptrs.remove(1);
         }
+        ptrs.remove(0);
     }
 
     public void bubble_sort() {

@@ -51,12 +51,10 @@ public class Piece implements Comparable<Piece> {
     }
 
     public void draw(java.awt.Graphics2D g){
-        final var centerX = x + size / 2;
-        final var centerY = y + size / 2;
         switch (type) {
             case 4 : {
                 g.setColor(new Color(0x24A146));
-                g.fillPolygon(new int[]{x, centerX, x + size}, new int[]{y + size, y, y + size}, 3);
+                g.fillPolygon(new int[]{x, perce(x, 0.5, size), x + size}, new int[]{y + size, y, y + size}, 3);
                 break;
             }
             case 6 : {
@@ -66,22 +64,29 @@ public class Piece implements Comparable<Piece> {
             }
             case 8 : {
                 g.setColor(new Color(0x9334E6));
-                g.fillRect(x, y, size, size);
+                g.fillPolygon(new int[]{perce(x, 0.08, size), perce(x, 0.07, size), perce(x, 0.5, size), perce(x, 0.93, size), perce(x, 0.92, size), perce(x, 0.5, size)}, new int[]{perce(y, 0.3, size), perce(y, 0.7, size), y + size, perce(y, 0.7, size), perce(y, 0.3, size), y}, 6);
                 break;
             }
             case 10 : {
                 g.setColor(new Color(0xE13295));
-                g.fillRect(x, y, size, size);
+                g.fillPolygon(new int[]{x, x, perce(x, 0.5, size), x + size, x + size, perce(x, 0.5, size), x}, new int[]{perce(y, 0.3, size), perce(y, 0.7, size), y + size, perce(y, 0.7, size), perce(y, 0.3, size), y}, 6);
                 break;
             }
             case 12 : {
                 g.setColor(new Color(0xD83025));
-                g.fillRect(x, y, size, size);
+                int[] xPoints = new int[10];
+                int[] yPoints = new int[10];
+                for (int i = 0; i < 10; i++) {
+                    double angle = Math.toRadians(i * 36); // Convert degrees to radians
+                    xPoints[i] = perce(x, 0.5, size) + (int) (size/2 * Math.cos(angle));
+                    yPoints[i] = perce(y, 0.5, size) + (int) (size/2 * Math.sin(angle));
+                }
+                g.fillPolygon(xPoints, yPoints, 10);
                 break;
             }
             case 20 : {
                 g.setColor(new Color(0xF26D00));
-                g.fillRect(x, y, size, size);
+                g.fillPolygon(new int[]{perce(x, 0.07, size), perce(x, 0.08, size), perce(x, 0.5, size), perce(x, 0.92, size), perce(x, 0.93, size), perce(x, 0.5, size)}, new int[]{perce(y, 0.3, size), perce(y, 0.7, size), y + size, perce(y, 0.7, size), perce(y, 0.3, size), y}, 6);
                 break;
             }
         
@@ -92,7 +97,11 @@ public class Piece implements Comparable<Piece> {
         g.setFont(new Font("Arial", Font.BOLD, 12));
 
         g.setColor(Color.black);
-        g.drawString("" + value, centerX - 3, centerY + 3);
+        g.drawString("" + value, perce(x, 0.5, size) - 3, perce(y, 0.5, size) + 3);
+    }
+
+    public int perce(double x, double per, double size){
+        return (int)(x + per * size);
     }
 
     public void pick(){
