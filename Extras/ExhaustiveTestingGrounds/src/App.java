@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.function.Function;
 import java.util.function.IntFunction;
@@ -34,4 +35,9 @@ public class App {
         }
         return growable;
     }	
+
+
+    public static int recursive_add(ArrayList<Integer> array){
+        return array.remove(0) + recursive_add(array);
+    }
 }
