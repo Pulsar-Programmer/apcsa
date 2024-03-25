@@ -1,5 +1,5 @@
 fn main() {
-    println!("Hello, world!");
+    println!("helxxxxloxxx! : {}", no_x("helxxxxloxxx!".into()));
 }
 
 fn recursive_add(vec: Vec<i32>) -> i32{
@@ -72,4 +72,21 @@ impl<T> SquareVec<T>{
 //     fn row() -> Vec<T>{
 
 //     }
+}
+
+
+
+
+
+
+
+fn no_x(str: String) -> String{
+    let Some(first_char) = str.chars().next() else { return String::new() };
+    let mut to_insert = if first_char == 'x'{
+        String::new()
+    } else {
+        first_char.to_string()
+    };
+    to_insert.push_str(no_x(str[1..].to_string()).as_str());
+    to_insert
 }
