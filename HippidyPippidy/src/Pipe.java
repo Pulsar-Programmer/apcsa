@@ -53,7 +53,7 @@ public class Pipe {
             solution.add(row);
         }
         move(start, points);
-        for(var i = 0; i < points.size(); i+=1){
+        for(var i = 0; i < points.size()-1; i+=1){
             var p = points.get(i);
             solution.get(p.y).set(p.x, '.');
         }
@@ -61,16 +61,19 @@ public class Pipe {
         return solution;
     }
     public boolean move(Point position, ArrayList<Point> points){
+        // System.out.println("Considering point " + position);
         if(position.equals(end)){
             return true;
         }
-        try_place(position);
+        // System.out.println(try_get(position));
         switch(try_get(position)){
             case 'x': case '.' : break;
             case '|' : {
+                try_place(position);
                 if(try_vertical(position, points)){return true;}
             } break;
             case '-' : {
+                try_place(position);
                 if(try_horizontal(position, points)){return true;}
             } break;
             case 'A': {

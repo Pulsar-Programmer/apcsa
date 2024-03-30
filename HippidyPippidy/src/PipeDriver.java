@@ -24,7 +24,5 @@ public class PipeDriver {
         if(!found){
             System.out.println("There is no solution for this board.");
         }
-        System.out.println(result);
-
     }
 }
