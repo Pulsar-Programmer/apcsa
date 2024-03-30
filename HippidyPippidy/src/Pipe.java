@@ -53,8 +53,11 @@ public class Pipe {
             solution.add(row);
         }
         move(start, points);
-        for(var i = 0; i < points.size()-1; i+=1){
+        for(var i = 0; i < points.size(); i+=1){
             var p = points.get(i);
+            if(p.equals(end)){
+                continue;
+            }
             solution.get(p.y).set(p.x, '.');
         }
 

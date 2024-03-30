@@ -11,3 +11,5 @@ Make sure to test mazes, that you create yourself and not just the
 single one provided.
 Ensure the program doesn’t crash for “trivial” or empty mazes and
 mazes that don’t have solutions.
+
+Eliminate the repeat points in the solution during start.

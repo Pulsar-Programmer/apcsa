@@ -10,6 +10,7 @@ public class PipeDriver {
         scanner.close();
         var my_pipe = new Pipe(new File(filename));
         final var result = my_pipe.start();
+        System.out.println("Your solution:");
         var found = false;
         for(var i = 0; i < result.size(); i++){
             for(var j = 0; j < result.get(i).size(); j++){
