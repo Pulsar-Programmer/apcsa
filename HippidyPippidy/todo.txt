@@ -1,0 +1,21 @@
+The goal of this lab is to solve a rectangular maze which will be loaded
+in from a separate text file. The text file will contain a rectangle of
+horizontal of vertical “pipes” represented by the ‘-‘ and ‘|’ characters
+and ‘x’ characters representing impassable zones. There is also a pair of
+other characters which you need to try to chart a path between. The
+output will be the solved maze, but if there’s no solution then print
+saying that.
+The maze needs to be solved recursively by checking the adjacent
+squares for empty spots and recursively calling the method from that
+possible path.
+Make sure to test mazes, that you create yourself and not just the
+single one provided.
+Ensure the program doesn’t crash for “trivial” or empty mazes and
+mazes that don’t have solutions.
+
+Call your classes Pipes and PipesDriver make sure that it has a
+constructor which will take in a file and builds a 2D board out of that.
+Get the name of the file from the user. Create a driver called
+PipesDriver
+The only class variables you should need is a 2D array of chars and the
+start and end spots represented as Point variables.
