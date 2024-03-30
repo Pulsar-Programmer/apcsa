@@ -1,0 +1,6 @@
+/**
+ * RectVec
+ */
+public class RectVec {
+    
+}

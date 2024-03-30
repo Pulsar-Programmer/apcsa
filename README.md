@@ -3,7 +3,8 @@
 Projects:
 
 | Lab | Name |
-| -------- | ------- |
+| -------- | -------- |
+| Pipe (9) | HippidyPippidy |
 | Visual Sort (8) | SorterAborter |
 | Tower of Hanoi (8) | HanoiAnnoi |
 | Vehicle (7) | Vehickle |
