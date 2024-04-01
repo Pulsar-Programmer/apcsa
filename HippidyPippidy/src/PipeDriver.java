@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 public class PipeDriver {
     public static void main(String[] args) throws Exception {
-
+        
         var scanner = new Scanner(System.in);
         System.out.println("What is the name of the file?");
         final var filename = scanner.nextLine();
@@ -23,6 +23,7 @@ public class PipeDriver {
             System.out.println();
         }
         if(!found){
+            //this doesn't work if the As are next to each other
             System.out.println("There is no solution for this board.");
         }
     }

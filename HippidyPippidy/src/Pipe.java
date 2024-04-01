@@ -9,21 +9,20 @@ public class Pipe {
     private ArrayList<ArrayList<Character>> board;
 
     public Pipe(File file) throws Exception{
-        start = new Point(0, 0);
-        end = new Point(0, 0);
+        start = new Point(-1, -1);
+        end = new Point(-1, -1);
+        //if there are under two As they are unsolvable
         ArrayList<ArrayList<Character>> result = new ArrayList<>();
         final var scanner = new Scanner(file);
         var layer = 0;
-        var got_start = false;
         while (scanner.hasNextLine()) {
             final var line = scanner.nextLine();
             ArrayList<Character> line_list = new ArrayList<>();
             final var array = line.toCharArray();
             for(var i = 0; i < array.length; i += 1){
                 if('A' == array[i]){
-                    if(!got_start) {
+                    if(start.equals(end)) {
                         start = new Point(i, layer);
-                        got_start = true;
                     }
                     else{
                         end = new Point(i, layer);
