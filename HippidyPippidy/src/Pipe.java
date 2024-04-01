@@ -2,11 +2,13 @@ import java.awt.Point;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.HashSet;
 
 public class Pipe {
     private Point start;
     private Point end;
     private ArrayList<ArrayList<Character>> board;
+    
 
     public Pipe(File file) throws Exception{
         start = new Point(-1, -1);
@@ -42,7 +44,7 @@ public class Pipe {
     }
 
     public ArrayList<ArrayList<Character>> start(){
-        var points = new ArrayList<Point>();
+        var points = new HashSet<Point>();
         var solution = new ArrayList<ArrayList<Character>>();
         for(var i = 0; i < board.size(); i++){
             var row = new ArrayList<Character>();
@@ -52,17 +54,13 @@ public class Pipe {
             solution.add(row);
         }
         move(start, points);
-        for(var i = 0; i < points.size(); i+=1){
-            var p = points.get(i);
-            if(p.equals(end)){
-                continue;
-            }
+        for(var p : points){
             solution.get(p.y).set(p.x, '.');
         }
 
         return solution;
     }
-    public boolean move(Point position, ArrayList<Point> points){
+    public boolean move(Point position, HashSet<Point> points){
         // System.out.println("Considering point " + position);
         if(position.equals(end)){
             return true;
@@ -87,14 +85,14 @@ public class Pipe {
         return false;
     }
 
-    private boolean try_vertical(Point position, ArrayList<Point> points){
+    private boolean try_vertical(Point position, HashSet<Point> points){
         final var above = flank_above(position);
         final var below = flank_below(position);
         if(move(above, points)) { points.add(above); return true; }
         if(move(below, points)) { points.add(below); return true; }
         return false;
     }
-    private boolean try_horizontal(Point position, ArrayList<Point> points){
+    private boolean try_horizontal(Point position, HashSet<Point> points){
         final var left = flank_left(position);
         final var right = flank_right(position);
         if(move(left, points)) { points.add(left); return true; }
@@ -148,6 +146,30 @@ public class Pipe {
             string += '\n';
         }
         return string;
+    }
+
+    public Point getStart() {
+        return start;
+    }
+
+    public void setStart(Point start) {
+        this.start = start;
+    }
+
+    public Point getEnd() {
+        return end;
+    }
+
+    public void setEnd(Point end) {
+        this.end = end;
+    }
+
+    public ArrayList<ArrayList<Character>> getBoard() {
+        return board;
+    }
+
+    public void setBoard(ArrayList<ArrayList<Character>> board) {
+        this.board = board;
     }
     
 

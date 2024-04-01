@@ -10,6 +10,7 @@ public class PipeDriver {
         scanner.close();
         var my_pipe = new Pipe(new File(filename));
         final var result = my_pipe.start();
+        final var p_end = my_pipe.getEnd();
         System.out.println("Your solution:");
         var found = false;
         for(var i = 0; i < result.size(); i++){
@@ -17,6 +18,10 @@ public class PipeDriver {
                 var c = result.get(i).get(j);
                 if(c=='.'){
                     found = true;
+                }
+                if(p_end.y == i && p_end.x == j){
+                    System.out.print('A');
+                    continue;
                 }
                 System.out.print(c);
             }
