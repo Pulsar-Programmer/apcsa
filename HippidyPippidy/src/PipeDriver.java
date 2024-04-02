@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 public class PipeDriver {
     public static void main(String[] args) throws Exception {
-        
+        //while loop
         var scanner = new Scanner(System.in);
         System.out.println("What is the name of the file?");
         final var filename = scanner.nextLine();

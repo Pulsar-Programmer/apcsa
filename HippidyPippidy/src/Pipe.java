@@ -13,7 +13,6 @@ public class Pipe {
     public Pipe(File file) throws Exception{
         start = new Point(-1, -1);
         end = new Point(-1, -1);
-        //if there are under two As they are unsolvable
         ArrayList<ArrayList<Character>> result = new ArrayList<>();
         final var scanner = new Scanner(file);
         var layer = 0;
