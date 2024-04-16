@@ -4,8 +4,9 @@ Projects:
 
 | Lab | Name |
 | -------- | -------- |
-| Pipe (9) | HippidyPippidy |
-| Visual Sort (8) | SorterAborter |
+| Recursive Graphics (10) | FractalTactile |
+| Pipe (10) | HippidyPippidy |
+| Visual Sort (9) | SorterAborter |
 | Tower of Hanoi (8) | HanoiAnnoi |
 | Vehicle (7) | Vehickle |
 | New Years (6) | GraphicsLab |
