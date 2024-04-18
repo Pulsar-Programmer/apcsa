@@ -1,3 +1,4 @@
+import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -26,34 +27,13 @@ public class Fractal extends JPanel {
 	@Override
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		Rectangle r = new Rectangle(0,0, getWidth(), getHeight());
-		System.out.println("MYLEVEL: " + this.level);
-		circuit(g,r,0);
+		Graphics2D g2d = (Graphics2D)g;
+		g2d.setStroke(new BasicStroke());
+		g2d.drawPolyline(null, null, ABORT);
 	}
 	
-	public void circuit(Graphics g, Rectangle r, int lev) {
-		int red = (int)(Math.random() * 256);
-		int gre = (int)(Math.random() * 256);
-		int blu = (int)(Math.random() * 256);
-		Color c = new Color(red, gre, blu);
-		g.setColor(c);
-		((Graphics2D)g).fill(r);
-
-		System.out.println(r.x + ", " + r.y);
-		if (lev >= this.level) return;
-
+	public void circuit() {
 		
-		if (Math.random() > 0.5) {
-			Rectangle top = new Rectangle(r.x,r.y,r.width,r.height / 2);
-			Rectangle bot = new Rectangle(r.x,r.y + r.height / 2,r.width,r.height / 2);
-			circuit(g,top,lev+1);
-			circuit(g,bot,lev+1);
-		} else {
-			Rectangle top = new Rectangle(r.x,r.y,r.width / 2,r.height);
-			Rectangle bot = new Rectangle(r.x + r.width / 2,r.y,r.width / 2,r.height);
-			circuit(g,top,lev+1);
-			circuit(g,bot,lev+1);
-		}
 	}
 
 	///Here, we intend to get the maximum x value that the person may scale their screen up to. The input is mapped between this range.
