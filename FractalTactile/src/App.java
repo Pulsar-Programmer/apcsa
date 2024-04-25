@@ -14,9 +14,9 @@ public class App {
 		mainframe.setTitle("The Fractal Circle");
 		mainframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         mainframe.setVisible(true);
-        mainframe.setSize(Fractal.x(100), Fractal.y(100));
+        mainframe.setSize(Fractal.x(100), Fractal.y(100) - 30);
 		
-		JSlider slider = new JSlider(SwingConstants.HORIZONTAL,0,20,0);
+		JSlider slider = new JSlider(SwingConstants.HORIZONTAL,0,10,0);
 		slider.setMajorTickSpacing(5);
 		slider.setMinorTickSpacing(1);
 		mainframe.add(slider,BorderLayout.SOUTH);
@@ -35,10 +35,8 @@ public class App {
 				if(slider.getValue() != level) {
 					level = slider.getValue();
 					painting.setLevel(level);
-					System.out.println("HI");
 					mainframe.repaint();
 				}
-				System.out.println(level);
 			}
 		});
 	}
