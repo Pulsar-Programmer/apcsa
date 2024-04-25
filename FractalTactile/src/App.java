@@ -16,7 +16,7 @@ public class App {
         mainframe.setVisible(true);
         mainframe.setSize(Fractal.x(100), Fractal.y(100) - 30);
 		
-		JSlider slider = new JSlider(SwingConstants.HORIZONTAL,0,10,0);
+		JSlider slider = new JSlider(SwingConstants.HORIZONTAL,1,20,3);
 		slider.setMajorTickSpacing(5);
 		slider.setMinorTickSpacing(1);
 		mainframe.add(slider,BorderLayout.SOUTH);
@@ -36,6 +36,7 @@ public class App {
 					level = slider.getValue();
 					painting.setLevel(level);
 					mainframe.repaint();
+					painting.getGen().clear();
 				}
 			}
 		});
