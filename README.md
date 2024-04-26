@@ -6,7 +6,7 @@ Projects:
 | -------- | -------- |
 | Recursive Graphics (10) | FractalTactile |
 | Pipe (10) | HippidyPippidy |
-| Visual Sort (9) | SorterAborter |
+| Visual Sort (9) | SorterReporter |
 | Tower of Hanoi (8) | HanoiAnnoi |
 | Vehicle (7) | Vehickle |
 | New Years (6) | GraphicsLab |
